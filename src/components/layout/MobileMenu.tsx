@@ -7,6 +7,7 @@ import { X, Search, User, Heart } from "lucide-react";
 import { useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { InstagramIcon, FacebookIcon } from "@/components/ui/SocialIcons";
+import { LogoMark } from "@/components/ui/LogoMark";
 
 interface MobileMenuProps {
   open: boolean;
@@ -61,7 +62,8 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             className="fixed top-0 right-0 z-[70] flex h-full w-[86%] max-w-sm flex-col bg-charcoal px-8 py-8 text-ivory"
           >
             <div className="flex items-center justify-between">
-              <span className="font-serif text-xl tracking-wide">
+              <span className="flex items-center gap-2.5 font-serif text-xl tracking-wide">
+                <LogoMark dark />
                 Mobee <span className="text-gold">Scents</span>
               </span>
               <button
