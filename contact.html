@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us | Mobee Scents</title>
+  <meta name="description" content="Get in touch with the Mobee Scents team — questions about orders, fragrances, or sizing." />
+  <meta name="theme-color" content="#1c1a17" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body data-page="contact">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div id="site-header"></div>
+  <div id="mobile-menu-root"></div>
+  <div id="search-overlay-root"></div>
+  <div id="cart-drawer-root"></div>
+
+  <main id="main-content">
+    <div class="page-head">
+      <div class="container">
+        <p class="eyebrow">Get in Touch</p>
+        <h1>Contact Us</h1>
+        <p>Questions about a fragrance, an order, or a size? We usually reply within one business day.</p>
+      </div>
+    </div>
+
+    <div class="container page-wrap">
+      <div class="contact-grid">
+        <div class="contact-form-col reveal" id="contactFormWrap">
+          <form id="contactForm" novalidate>
+            <div class="form-grid-2">
+              <div class="form-field">
+                <label for="cf-name">Full Name</label>
+                <input type="text" id="cf-name" placeholder="Your name" />
+                <p class="field-error" id="err-name" hidden></p>
+              </div>
+              <div class="form-field">
+                <label for="cf-email">Email Address</label>
+                <input type="email" id="cf-email" placeholder="you@example.com" />
+                <p class="field-error" id="err-email" hidden></p>
+              </div>
+            </div>
+            <div class="form-grid-2">
+              <div class="form-field">
+                <label for="cf-phone">Phone Number <span class="optional">(optional)</span></label>
+                <input type="tel" id="cf-phone" placeholder="+92 3XX XXXXXXX" />
+              </div>
+              <div class="form-field">
+                <label for="cf-subject">Subject</label>
+                <input type="text" id="cf-subject" placeholder="How can we help?" />
+                <p class="field-error" id="err-subject" hidden></p>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" rows="5" placeholder="Tell us more…"></textarea>
+              <p class="field-error" id="err-message" hidden></p>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+          </form>
+        </div>
+
+        <div class="contact-info-col reveal reveal-delay-1">
+          <a class="whatsapp-btn" id="contactWhatsapp" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-11.9 7.8L3 21l1.7-6.1A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+            Chat with us on WhatsApp
+          </a>
+
+          <div class="info-rows">
+            <div class="info-row">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 6.5 8 6.5 8-6.5"/></svg>
+              <div><p class="label">Email</p><p class="val" id="contactEmail"></p></div>
+            </div>
+            <div class="info-row">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 3.5 9 8l-1.8 2A12 12 0 0 0 14 16.8l2-1.8 4.5 2.4V21a1 1 0 0 1-1.1 1C10.6 21.6 3.4 14.4 3 5.6A1 1 0 0 1 4 4.5Z"/></svg>
+              <div><p class="label">Phone</p><p class="val" id="contactPhone"></p></div>
+            </div>
+            <div class="info-row">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+              <div><p class="label">Studio</p><p class="val" id="contactAddress"></p></div>
+            </div>
+            <div class="info-row">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12,7 12,12 16,14"/></svg>
+              <div><p class="label">Business Hours</p><p class="val" id="contactHours"></p></div>
+            </div>
+          </div>
+
+          <div>
+            <p class="social-title">Follow Us</p>
+            <div class="social-row">
+              <a id="contactInstagram" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+              <a id="contactFacebook" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 8.5h-2a2 2 0 0 0-2 2V21"/><path d="M8.5 13.5h4.5"/><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/></svg></a>
+              <a id="contactTwitter" aria-label="Twitter"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7.5 9.5L4.5 20H7l5.2-5.9L16.5 20H20l-8-10.2L18.5 4H16l-4.6 5.2L7.5 4H4Z"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/reveal.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/contact.js"></script>
+</body>
+</html>

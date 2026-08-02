@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Wishlist | Mobee Scents</title>
+  <meta name="description" content="Fragrances you've saved for later at Mobee Scents." />
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#1c1a17" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body data-page="wishlist">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div id="site-header"></div>
+  <div id="mobile-menu-root"></div>
+  <div id="search-overlay-root"></div>
+  <div id="cart-drawer-root"></div>
+  <div id="quickview-root"></div>
+
+  <main id="main-content">
+    <div class="page-head">
+      <div class="container">
+        <p class="eyebrow">Saved for Later</p>
+        <h1>Your Wishlist</h1>
+      </div>
+    </div>
+
+    <div class="container page-wrap">
+      <div class="product-grid" id="wishlistGrid"></div>
+      <div class="wishlist-empty" id="wishlistEmpty" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5S3.5 15.2 3.5 9.2C3.5 6.3 5.8 4 8.7 4c1.7 0 3.1.8 3.9 2.1C13.4 4.8 14.8 4 16.5 4c2.9 0 5.2 2.3 5.2 5.2 0 6-8.7 11.3-8.7 11.3Z"/></svg>
+        <p>You haven&rsquo;t saved any fragrances yet.</p>
+        <a class="btn btn-primary" href="shop.html">Browse the Collection</a>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/reveal.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/product-card.js"></script>
+  <script src="assets/js/quickview.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+</body>
+</html>
