@@ -8,8 +8,8 @@ function renderQuickViewShell() {
   const mount = document.getElementById("quickview-root");
   if (!mount) return;
   mount.innerHTML = `
-    <div class="modal-overlay" id="qvOverlay">
-      <div class="modal-quickview" role="dialog" aria-modal="true" id="qvModal">
+    <div class="modal" id="qvOverlay">
+      <div class="modal-card" role="dialog" aria-modal="true" id="qvModal">
         <button class="modal-close" id="qvClose" aria-label="Close quick view">${icon("x")}</button>
         <div class="modal-visual"><span class="bottle-wrap" id="qvBottle"></span></div>
         <div class="modal-body" id="qvBody"></div>
@@ -32,13 +32,13 @@ function openQuickView(id) {
   __qvQty = 1;
   renderQuickViewBody();
   document.getElementById("qvBottle").innerHTML = bottleSVG(__qvProduct.bottleVariant, __qvProduct.accent, __qvProduct.accentSoft);
-  document.getElementById("qvOverlay").classList.add("is-open");
+  document.getElementById("qvOverlay").classList.add("open");
   document.body.style.overflow = "hidden";
 }
 
 function closeQuickView() {
   const overlay = document.getElementById("qvOverlay");
-  if (overlay) overlay.classList.remove("is-open");
+  if (overlay) overlay.classList.remove("open");
   document.body.style.overflow = "";
 }
 
@@ -79,7 +79,7 @@ function renderQuickViewBody() {
       </div>
     </div>
     <div class="modal-actions">
-      <button class="btn btn-primary btn-lg" id="qvAddBtn">Add to Cart</button>
+      <button class="btn primary" id="qvAddBtn">Add to Cart</button>
       <button class="modal-wishlist-btn${wishlisted ? " is-active" : ""}" id="qvWishlistBtn" aria-label="Toggle wishlist">${icon("heart")}</button>
     </div>`;
 

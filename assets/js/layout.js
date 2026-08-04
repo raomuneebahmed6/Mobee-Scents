@@ -1,11 +1,21 @@
-/* Renders + wires up: header, mobile menu, account dropdown, search overlay,
-   cart drawer, footer. Runs on every page via a `<div id="site-header"></div>`
-   / `<div id="site-footer"></div>` pair plus the shared script includes. */
+/* Renders + wires up: loader, scroll-progress, top bar, pill header + dropdown nav,
+   mobile nav, account dropdown, search overlay, cart drawer, footer, WhatsApp float, to-top.
+   Runs on every page via the shared mount points + script includes. */
 
 const NAV_LINKS = [
   { label: "Home", href: "index.html", page: "home" },
   { label: "Shop", href: "shop.html", page: "shop" },
-  { label: "Collections", href: "collections.html", page: "collections" },
+];
+
+const COLLECTION_LINKS = [
+  { label: "Warm Spicy", href: "shop.html?category=Warm+Spicy" },
+  { label: "Woody Spicy", href: "shop.html?category=Woody+Spicy" },
+  { label: "Woody Aromatic", href: "shop.html?category=Woody+Aromatic" },
+  { label: "Leather", href: "shop.html?category=Leather" },
+  { label: "View All Collections", href: "collections.html" },
+];
+
+const NAV_LINKS_2 = [
   { label: "About Us", href: "about.html", page: "about" },
   { label: "Contact", href: "contact.html", page: "contact" },
 ];
@@ -14,95 +24,78 @@ function currentPage() {
   return document.body.getAttribute("data-page") || "";
 }
 
+function renderChrome() {
+  document.body.insertAdjacentHTML(
+    "afterbegin",
+    `<div class="loader" id="loader"><span class="loader-mark" id="loaderMark"></span></div>
+     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+     <a class="whatsapp-float" id="whatsappFloat" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">${icon("message-circle")}</a>
+     <button class="to-top" id="toTop" aria-label="Back to top">${icon("chevron-down", "")}</button>`
+  );
+  document.getElementById("loaderMark").innerHTML = logoMarkSVG(true);
+  const toTopIcon = document.querySelector("#toTop svg");
+  if (toTopIcon) toTopIcon.style.transform = "rotate(180deg)";
+  document.getElementById("whatsappFloat").href = `https://wa.me/${SITE_CONFIG.whatsappNumber}`;
+}
+
+function renderTopBar() {
+  const mount = document.getElementById("top-bar-root");
+  if (!mount) return;
+  mount.innerHTML = `
+    <div class="top-bar" id="topBar">
+      <a class="top-bar-msg" href="shop.html"><span class="tb-full">✨ Discover Your Signature Scent — Shop the Collection</span><span class="tb-short">✨ Shop the Collection</span></a>
+      <div class="top-bar-social">
+        <a href="${SITE_CONFIG.social.instagram}" aria-label="Instagram">${icon("instagram")}</a>
+        <a href="${SITE_CONFIG.social.facebook}" aria-label="Facebook">${icon("facebook")}</a>
+        <a href="${SITE_CONFIG.social.twitter}" aria-label="Twitter">${icon("twitter")}</a>
+      </div>
+    </div>`;
+}
+
 function renderHeader() {
   const mount = document.getElementById("site-header");
   if (!mount) return;
   const page = currentPage();
 
-  const navHTML = NAV_LINKS.map(
-    (l) => `<a class="nav-link${l.page === page ? " active" : ""}" href="${l.href}">${l.label}</a>`
-  ).join("");
+  const linkHTML = (l) => `<a class="${l.page === page ? "active" : ""}" href="${l.href}">${l.label}</a>`;
+  const dropdownHTML = COLLECTION_LINKS.map((l) => `<a href="${l.href}">${l.label}</a>`).join("");
 
   mount.innerHTML = `
     <header class="site-header" id="siteHeader">
-      <div class="container header-inner">
-        <a class="logo" href="index.html" aria-label="Mobee Scents — home">
-          <span id="headerLogoMark"></span>
-          <span class="logo-text">Mobee <span class="accent">Scents</span></span>
-        </a>
-        <nav class="main-nav">${navHTML}</nav>
-        <div class="header-icons">
-          <button class="icon-btn hide-mobile" id="searchBtn" aria-label="Search">${icon("search")}</button>
-          <div class="account-menu-wrap">
-            <button class="icon-btn" id="accountBtn" aria-label="Account">${icon("user")}</button>
-            <div class="account-menu" id="accountMenu">
-              <p class="font-serif">Welcome</p>
-              <p>Sign in to track orders, save your wishlist across devices, and checkout faster.</p>
-              <button class="btn btn-primary">Sign In</button>
-              <button class="btn btn-secondary">Create Account</button>
-            </div>
-          </div>
-          <a class="icon-btn hide-mobile" href="wishlist.html" aria-label="Wishlist" style="position:relative;">
-            ${icon("heart")}
-            <span class="icon-badge" id="wishlistBadge" hidden>0</span>
-          </a>
-          <button class="icon-btn" id="cartBtn" aria-label="Open cart" style="position:relative;">
-            ${icon("bag")}
-            <span class="icon-badge" id="cartBadge" hidden>0</span>
-          </button>
-          <button class="icon-btn hide-desktop" id="menuBtn" aria-label="Open menu">${icon("menu")}</button>
+      <a class="brand" href="index.html" aria-label="Mobee Scents — home">
+        <span id="headerLogoMark"></span>
+        <span><strong>Mobee <em>Scents</em></strong><small>Signature Fragrance House</small></span>
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        ${NAV_LINKS.map(linkHTML).join("")}
+        <div class="nav-item"><a href="collections.html">Collections ▾</a>
+          <div class="dropdown">${dropdownHTML}</div>
         </div>
+        ${NAV_LINKS_2.map(linkHTML).join("")}
+        <a class="nav-cta" href="shop.html">${icon("bag")} Shop Now</a>
+      </nav>
+      <div class="nav-icons">
+        <button class="icon-btn" id="searchBtn" aria-label="Search">${icon("search")}</button>
+        <div class="account-menu-wrap">
+          <button class="icon-btn" id="accountBtn" aria-label="Account">${icon("user")}</button>
+          <div class="account-menu" id="accountMenu">
+            <p class="font-serif">Welcome</p>
+            <p>Sign in to track orders, save your wishlist across devices, and checkout faster.</p>
+            <button class="btn primary">Sign In</button>
+            <button class="btn soft">Create Account</button>
+          </div>
+        </div>
+        <a class="icon-btn" href="wishlist.html" aria-label="Wishlist">
+          ${icon("heart")}<span class="icon-badge" id="wishlistBadge" hidden>0</span>
+        </a>
+        <button class="icon-btn" id="cartBtn" aria-label="Open cart">
+          ${icon("bag")}<span class="icon-badge" id="cartBadge" hidden>0</span>
+        </button>
       </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </header>`;
 
-  if (page !== "home") {
-    document.getElementById("siteHeader").classList.add("is-solid");
-  }
-  setHeaderLight(page === "home");
-}
-
-function setHeaderLight(isLight) {
-  const header = document.getElementById("siteHeader");
-  const mark = document.getElementById("headerLogoMark");
-  if (!header || !mark) return;
-  header.classList.toggle("is-light", isLight);
-  mark.innerHTML = logoMarkSVG(isLight);
-}
-
-function renderMobileMenu() {
-  const mount = document.getElementById("mobile-menu-root");
-  if (!mount) return;
-  const page = currentPage();
-  const linksHTML = NAV_LINKS.map(
-    (l) => `<a class="mobile-nav-link${l.page === page ? " active" : ""}" href="${l.href}">${l.label}</a>`
-  ).join("");
-
-  mount.innerHTML = `
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
-      <div class="mobile-menu-panel">
-        <div class="mobile-menu-head">
-          <span class="logo-text" style="display:flex;align-items:center;gap:.6rem;">
-            <span id="mobileLogoMark"></span>
-            Mobee <span class="accent">Scents</span>
-          </span>
-          <button class="icon-btn" id="mobileMenuClose" aria-label="Close menu">${icon("x")}</button>
-        </div>
-        <nav class="mobile-nav">${linksHTML}</nav>
-        <div class="mobile-menu-links">
-          <a href="shop.html">${icon("search", "")} Search</a>
-          <a href="wishlist.html">${icon("heart")} Wishlist</a>
-          <span>${icon("user")} Account</span>
-        </div>
-        <div class="mobile-menu-foot">
-          <p>Follow Us</p>
-          <div class="social-row">
-            <a href="${SITE_CONFIG.social.instagram}" aria-label="Instagram">${icon("instagram")}</a>
-            <a href="${SITE_CONFIG.social.facebook}" aria-label="Facebook">${icon("facebook")}</a>
-          </div>
-        </div>
-      </div>
-    </div>`;
-  document.getElementById("mobileLogoMark").innerHTML = logoMarkSVG(true);
+  document.getElementById("headerLogoMark").innerHTML = logoMarkSVG(false);
 }
 
 function renderSearchOverlay() {
@@ -115,7 +108,7 @@ function renderSearchOverlay() {
         <div class="search-inner">
           <div class="search-top-row">
             <p>Search the Collection</p>
-            <button id="searchOverlayClose" aria-label="Close search">${icon("x")}</button>
+            <button class="icon-btn" id="searchOverlayClose" aria-label="Close search">${icon("x")}</button>
           </div>
           <form class="search-field" id="searchOverlayForm">
             ${icon("search")}
@@ -154,7 +147,7 @@ function updateCartDrawer() {
       <div class="cart-empty">
         ${icon("bag")}
         <p>Your bag is empty.</p>
-        <a class="btn btn-primary" href="shop.html">Shop the Collection ${icon("arrow-right")}</a>
+        <a class="btn primary" href="shop.html">Shop the Collection ${icon("arrow-right")}</a>
       </div>`;
     return;
   }
@@ -191,7 +184,7 @@ function updateCartDrawer() {
     <div class="cart-summary">
       <div class="cart-subtotal-row"><span>Subtotal</span><span class="value">${formatPrice(Store.cartSubtotal())}</span></div>
       <p class="cart-note">Shipping and taxes calculated at checkout.</p>
-      <button class="btn btn-primary btn-full btn-lg" id="cartCheckoutBtn">Checkout</button>
+      <button class="btn primary full" id="cartCheckoutBtn">Checkout</button>
     </div>`;
 
   bodyEl.querySelectorAll(".cart-line").forEach((row) => {
@@ -221,79 +214,38 @@ function renderFooter() {
   const mount = document.getElementById("site-footer");
   if (!mount) return;
   mount.innerHTML = `
-    <footer class="site-footer">
-      <div class="container footer-grid">
+    <div class="footer-wave" aria-hidden="true"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0 42C180 74 380 6 640 18s430 52 560 34c110-15 190-24 240-14v32H0Z" fill="#1C1A17"/></svg></div>
+    <footer class="footer">
+      <div class="footer-top">
         <div class="footer-brand">
-          <a class="logo" href="index.html"><span id="footerLogoMark"></span><span class="logo-text">Mobee <span class="accent">Scents</span></span></a>
+          <div class="footer-brand-mark"><span id="footerLogoMark"></span><strong>Mobee <em>Scents</em></strong></div>
           <p>Mobee Scents is a fragrance house dedicated to compositions that are worn, remembered, and reached for again. Discover your signature scent.</p>
-          <div class="footer-social">
-            <a href="${SITE_CONFIG.social.instagram}" aria-label="Instagram">${icon("instagram")}</a>
-            <a href="${SITE_CONFIG.social.facebook}" aria-label="Facebook">${icon("facebook")}</a>
-            <a href="${SITE_CONFIG.social.twitter}" aria-label="Twitter">${icon("twitter")}</a>
+          <div class="social-links">
+            <a href="${SITE_CONFIG.social.instagram}" aria-label="Instagram">${icon("instagram", "social-svg")}</a>
+            <a href="${SITE_CONFIG.social.facebook}" aria-label="Facebook">${icon("facebook", "social-svg")}</a>
+            <a href="${SITE_CONFIG.social.twitter}" aria-label="Twitter">${icon("twitter", "social-svg")}</a>
           </div>
         </div>
-        <div class="footer-col">
-          <p class="col-title">Shop</p>
-          <ul>
-            <li><a href="shop.html">All Fragrances</a></li>
-            <li><a href="collections.html">Collections</a></li>
-            <li><a href="shop.html?sort=rating">Best Sellers</a></li>
-            <li><a href="shop.html">New Arrivals</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <p class="col-title">Support</p>
-          <ul>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="about.html">About Mobee Scents</a></li>
-            <li><a href="wishlist.html">Wishlist</a></li>
-            <li><a href="contact.html">Track Order</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <p class="col-title">Policies</p>
-          <ul>
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
-            <li><a href="shipping-policy.html">Shipping Policy</a></li>
-            <li><a href="return-policy.html">Return Policy</a></li>
-          </ul>
+        <nav class="footer-col" aria-label="Shop"><h3>Shop</h3>
+          <a href="shop.html">All Fragrances</a><a href="collections.html">Collections</a><a href="shop.html?sort=rating">Best Sellers</a><a href="shop.html">New Arrivals</a>
+        </nav>
+        <nav class="footer-col" aria-label="Support"><h3>Support</h3>
+          <a href="contact.html">Contact Us</a><a href="about.html">About Mobee Scents</a><a href="wishlist.html">Wishlist</a><a href="contact.html">Track Order</a>
+        </nav>
+        <nav class="footer-col" aria-label="Policies"><h3>Policies</h3>
+          <a href="privacy-policy.html">Privacy Policy</a><a href="terms-and-conditions.html">Terms &amp; Conditions</a><a href="shipping-policy.html">Shipping Policy</a><a href="return-policy.html">Return Policy</a>
+        </nav>
+        <div class="footer-col"><h3>Contact</h3>
+          <a href="https://wa.me/${SITE_CONFIG.whatsappNumber}" target="_blank" rel="noopener">WhatsApp: ${SITE_CONFIG.phone}</a>
+          <a href="mailto:${SITE_CONFIG.email}">${SITE_CONFIG.email}</a>
+          <span style="font-size:.88rem;">${SITE_CONFIG.address}</span>
         </div>
       </div>
-
-      <div class="container footer-meta">
-        <div class="footer-meta-row">
-          <div class="footer-contacts">
-            <span>${icon("map-pin")} ${SITE_CONFIG.address}</span>
-            <span>${icon("mail")} ${SITE_CONFIG.email}</span>
-            <span>${icon("phone")} ${SITE_CONFIG.phone}</span>
-          </div>
-          <form class="footer-newsletter-form" id="footerNewsletterForm">
-            <input type="email" required placeholder="Your email address" id="footerNewsletterInput" />
-            <button type="submit">Subscribe ${icon("arrow-right")}</button>
-          </form>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div class="container footer-bottom-row">
-          <p>© <span id="footerYear"></span> Mobee Scents. All rights reserved.</p>
-          <p>Discover Your Signature Scent</p>
-        </div>
-      </div>
+      <div class="footer-bottom"><p>© <span id="footerYear"></span> Mobee Scents. All rights reserved. · Discover Your Signature Scent</p></div>
     </footer>`;
 
   document.getElementById("footerLogoMark").innerHTML = logoMarkSVG(true);
   document.getElementById("footerYear").textContent = new Date().getFullYear();
-
-  const form = document.getElementById("footerNewsletterForm");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const input = document.getElementById("footerNewsletterInput");
-    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
-      form.innerHTML = '<p style="color:var(--color-gold);font-size:.9rem;">Thank you for subscribing.</p>';
-    }
-  });
 }
 
 function updateBadges() {
@@ -311,18 +263,6 @@ function updateBadges() {
   }
 }
 
-function initHeaderScroll() {
-  const header = document.getElementById("siteHeader");
-  if (!header || currentPage() !== "home") return;
-  const onScroll = () => {
-    const solid = window.scrollY > 40;
-    header.classList.toggle("is-solid", solid);
-    setHeaderLight(!solid);
-  };
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
-}
-
 function openCartDrawer() {
   document.getElementById("cartOverlay").classList.add("is-open");
   document.body.style.overflow = "hidden";
@@ -332,22 +272,84 @@ function closeCartDrawer() {
   document.body.style.overflow = "";
 }
 
+/* ---------- loader ---------- */
+function initLoader() {
+  const loader = document.getElementById("loader");
+  if (!loader) return;
+  const done = () => loader.classList.add("done");
+  window.addEventListener("load", done);
+  setTimeout(done, 1800);
+}
+
+/* ---------- scroll: progress bar, header pill, top-bar hide, parallax, timeline, to-top ---------- */
+function initScrollEffects() {
+  const progress = document.getElementById("scrollProgress");
+  const header = document.getElementById("siteHeader");
+  const topBar = document.getElementById("topBar");
+  const toTop = document.getElementById("toTop");
+  const pEls = document.querySelectorAll("[data-parallax]");
+  const timeline = document.getElementById("timeline");
+  const fill = document.getElementById("timelineFill");
+  const steps = timeline ? [...timeline.querySelectorAll(".step")] : [];
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const wantsLightHeader = document.body.dataset.headerTheme === "light";
+
+  function onScroll() {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    if (progress) progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+    if (header) {
+      const scrolled = h.scrollTop > 30;
+      header.classList.toggle("scrolled", scrolled);
+      if (wantsLightHeader) header.classList.toggle("is-light", !scrolled);
+    }
+    if (topBar) topBar.classList.toggle("hide", h.scrollTop > 30);
+    if (toTop) toTop.classList.toggle("show", h.scrollTop > 600);
+    if (!reduceMotion) {
+      pEls.forEach((el) => {
+        el.style.transform = `translateY(${window.scrollY * parseFloat(el.dataset.parallax || 0)}px)`;
+      });
+    }
+    if (timeline && fill) {
+      const rect = timeline.getBoundingClientRect();
+      const progressed = Math.min(Math.max(window.innerHeight * 0.65 - rect.top, 0), rect.height);
+      fill.style.height = progressed + "px";
+      steps.forEach((st) => {
+        const top = st.getBoundingClientRect().top - rect.top;
+        st.classList.toggle("active", progressed >= top + 10);
+      });
+    }
+  }
+  document.addEventListener("scroll", onScroll, { passive: true });
+  if (toTop) toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }));
+  onScroll();
+}
+
 function initInteractions() {
-  // Mobile menu
-  const menuBtn = document.getElementById("menuBtn");
-  const mobileOverlay = document.getElementById("mobileMenuOverlay");
-  if (menuBtn && mobileOverlay) {
-    menuBtn.addEventListener("click", () => {
-      mobileOverlay.classList.add("is-open");
-      document.body.style.overflow = "hidden";
+  // Mobile nav toggle
+  const menuToggle = document.getElementById("menuToggle");
+  const mainNav = document.getElementById("mainNav");
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener("click", () => {
+      const open = mainNav.classList.toggle("open");
+      menuToggle.classList.toggle("open", open);
+      menuToggle.setAttribute("aria-expanded", String(open));
+      document.body.style.overflow = open ? "hidden" : "";
     });
-    const close = () => {
-      mobileOverlay.classList.remove("is-open");
-      document.body.style.overflow = "";
-    };
-    document.getElementById("mobileMenuClose").addEventListener("click", close);
-    mobileOverlay.addEventListener("click", (e) => {
-      if (e.target === mobileOverlay) close();
+    mainNav.querySelectorAll(".nav-item > a").forEach((a) => {
+      a.addEventListener("click", (e) => {
+        if (window.innerWidth <= 1024) {
+          e.preventDefault();
+          a.closest(".nav-item").classList.toggle("open");
+        }
+      });
+    });
+    mainNav.querySelectorAll(":scope > a, .dropdown a, .nav-cta").forEach((a) => {
+      a.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        menuToggle.classList.remove("open");
+        document.body.style.overflow = "";
+      });
     });
   }
 
@@ -360,9 +362,7 @@ function initInteractions() {
       accountMenu.classList.toggle("is-open");
     });
     document.addEventListener("click", (e) => {
-      if (!accountMenu.contains(e.target) && e.target !== accountBtn) {
-        accountMenu.classList.remove("is-open");
-      }
+      if (!accountMenu.contains(e.target) && e.target !== accountBtn) accountMenu.classList.remove("is-open");
     });
   }
 
@@ -399,23 +399,19 @@ function initInteractions() {
           p.category.toLowerCase().includes(q) ||
           p.noteFamilies.some((n) => n.toLowerCase().includes(q))
       );
-      if (matches.length === 0) {
-        resultsEl.innerHTML = `<p class="search-empty">No fragrances found for "${input.value}".</p>`;
-        return;
-      }
-      resultsEl.innerHTML = matches
-        .map(
-          (p) => `
+      resultsEl.innerHTML =
+        matches.length === 0
+          ? `<p class="search-empty">No fragrances found for "${input.value}".</p>`
+          : matches
+              .map(
+                (p) => `
         <a class="search-result-item" href="shop.html?q=${encodeURIComponent(p.name)}">
           <span class="thumb">${bottleSVG(p.bottleVariant, p.accent, p.accentSoft, { glow: false })}</span>
-          <span>
-            <span class="name" style="display:block;">${p.name}</span>
-            <span class="cat">${p.category}</span>
-          </span>
+          <span><span class="name" style="display:block;">${p.name}</span><span class="cat">${p.category}</span></span>
           <span class="price">${formatPrice(p.price)}</span>
         </a>`
-        )
-        .join("");
+              )
+              .join("");
     });
     document.getElementById("searchOverlayForm").addEventListener("submit", (e) => {
       e.preventDefault();
@@ -436,13 +432,15 @@ function initInteractions() {
 }
 
 function initLayout() {
+  renderChrome();
+  renderTopBar();
   renderHeader();
-  renderMobileMenu();
   renderSearchOverlay();
   renderCartDrawer();
   renderFooter();
   initInteractions();
-  initHeaderScroll();
+  initLoader();
+  initScrollEffects();
   updateCartDrawer();
   updateBadges();
   Store.onChange(() => {

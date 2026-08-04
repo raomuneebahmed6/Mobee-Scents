@@ -2,11 +2,13 @@
 
 Premium, fully responsive fragrance e-commerce website for **Mobee Scents** — built with plain **HTML, CSS, and JavaScript**. No framework, no build step, no npm install required.
 
+The component/motion system (top announcement bar, floating pill header with dropdown nav, hero with parallax blobs + stat banner card, marquee ticker, service cards, dark scrollytelling "journey" section, wave footer, WhatsApp float, etc.) is modeled on lmshandling.com, recolored into the ivory/charcoal/gold palette with Cormorant Garamond headings.
+
 ## Tech Stack
 
 - Static multi-page HTML site (one `.html` file per route)
 - Vanilla CSS (`assets/css/style.css`) — custom properties for the ivory/charcoal/gold theme
-- Vanilla JavaScript (no libraries, no dependencies) — header/footer/menus/modals are rendered into placeholder `<div>`s by `assets/js/layout.js` so markup isn't duplicated across pages
+- Vanilla JavaScript (no libraries, no dependencies) — header/top-bar/footer/menus/modals are rendered into placeholder `<div>`s by `assets/js/layout.js` so markup isn't duplicated across pages
 - Google Fonts (Cormorant Garamond + Jost) loaded via `<link>` tag
 - Cart & wishlist persisted client-side via `localStorage`
 - Product imagery is hand-coded SVG bottle art (`assets/js/icons.js` → `bottleSVG()`) so the site works with zero external image assets
@@ -51,8 +53,10 @@ assets/
     data.js                  Product/testimonial/note/benefit data + SITE_CONFIG (contact info)
     icons.js                 Inline SVG icon set, logo mark, and bottleSVG() product art generator
     storage.js                Cart + wishlist state (localStorage), pub/sub via Store.onChange()
-    reveal.js                 Generic scroll-reveal (IntersectionObserver adds .in-view)
-    layout.js                 Renders header, mobile menu, search overlay, cart drawer, footer
+    reveal.js                 Generic scroll-reveal (IntersectionObserver adds .in)
+    layout.js                 Renders loader, scroll progress, top bar, header + dropdown nav,
+                               mobile nav, account dropdown, search overlay, cart drawer, footer,
+                               WhatsApp float / back-to-top, and all their scroll/click interactions
     product-card.js           renderProductGrid() — used by home/shop/wishlist
     quickview.js              Quick View modal (shared)
     home.js, shop.js, collections.js, contact.js, wishlist.js   Page-specific logic

@@ -1,169 +1,194 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mobee Scents — Discover Your Signature Scent</title>
-  <meta name="description" content="Mobee Scents is a premium fragrance house offering a curated collection of iconic perfumes — warm spicy, woody, and leather compositions designed to leave a lasting impression." />
-  <meta name="theme-color" content="#1c1a17" />
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-  <meta property="og:title" content="Mobee Scents — Discover Your Signature Scent" />
-  <meta property="og:description" content="Explore a carefully selected collection of iconic fragrances designed to leave a lasting impression." />
-  <meta property="og:type" content="website" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mobee Scents — Discover Your Signature Scent</title>
+<meta name="description" content="Mobee Scents is a premium fragrance house offering a curated collection of iconic perfumes — warm spicy, woody, and leather compositions designed to leave a lasting impression." />
+<meta name="theme-color" content="#1C1A17" />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<meta property="og:title" content="Mobee Scents — Discover Your Signature Scent" />
+<meta property="og:description" content="Explore a carefully selected collection of iconic fragrances designed to leave a lasting impression." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body data-page="home">
-  <a class="skip-link" href="#main-content">Skip to content</a>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
-  <div id="site-header"></div>
-  <div id="mobile-menu-root"></div>
-  <div id="search-overlay-root"></div>
-  <div id="cart-drawer-root"></div>
-  <div id="quickview-root"></div>
+<div id="top-bar-root"></div>
+<div id="site-header"></div>
+<div id="search-overlay-root"></div>
+<div id="cart-drawer-root"></div>
+<div id="quickview-root"></div>
 
-  <main id="main-content">
+<main id="main-content">
 
-    <!-- Hero -->
-    <section class="hero" id="hero">
-      <div class="hero-glow"></div>
-      <div class="hero-visual-wrap" id="heroVisualWrap">
-        <div class="hero-visual">
-          <div class="hero-visual-inner" id="heroVisualInner">
-            <div id="heroBottle" style="height:100%;width:100%;"></div>
-          </div>
-        </div>
+  <!-- ================= HERO ================= -->
+  <section class="hero section" aria-label="Introduction">
+    <div class="hero-bg">
+      <div class="blob b1" data-parallax="0.25"></div><div class="blob b2" data-parallax="-0.18"></div>
+      <div class="float-icon f1" data-parallax="0.12" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3s-5 6-5 10a5 5 0 0 0 10 0c0-4-5-10-5-10Z"/></svg></div>
+      <div class="float-icon f2" data-parallax="-0.1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M4 12h4M16 12h4M6.5 6.5l2 2M15.5 15.5l2 2M6.5 17.5l2-2M15.5 8.5l2-2"/></svg></div>
+      <div class="float-icon f3" data-parallax="0.18" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 16-6 16-16-9 0-16 7-16 16Z"/><path d="M4 20c0-5 3-9 8-11.5"/></svg></div>
+    </div>
+    <div class="hero-copy">
+      <p class="kicker reveal">Mobee Scents · Signature Fragrance House</p>
+      <h1 class="hero-title reveal" data-delay="1">Find a Fragrance <span class="hl">That Defines You</span></h1>
+      <p class="hero-text reveal" data-delay="2">Explore a carefully selected collection of iconic fragrances designed to leave a lasting impression.</p>
+      <div class="hero-quick-services reveal" data-delay="2">
+        <a href="shop.html?category=Warm+Spicy"><b>01</b><strong>Warm Spicy</strong><span>Tobacco, cinnamon &amp; saffron</span></a>
+        <a href="shop.html?category=Woody+Spicy"><b>02</b><strong>Woody Spicy</strong><span>Mandarin, rose &amp; amber</span></a>
+        <a href="shop.html?category=Woody+Aromatic"><b>03</b><strong>Woody Aromatic</strong><span>Sandalwood &amp; cedar</span></a>
+        <a href="shop.html?category=Leather"><b>04</b><strong>Leather</strong><span>Suede, amber &amp; woods</span></a>
       </div>
-      <div class="hero-content" id="heroContent">
-        <div class="container">
-          <div class="hero-content-inner">
-            <p class="hero-eyebrow">Discover Your Signature Scent</p>
-            <h1 class="hero-title" id="heroTitle">Find a Fragrance That Defines You</h1>
-            <p class="hero-sub">Explore a carefully selected collection of iconic fragrances designed to leave a lasting impression.</p>
-            <div class="hero-actions">
-              <a class="btn btn-primary btn-lg" href="shop.html">Shop Collection <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13,5 20,12 13,19"/></svg></a>
-              <a class="btn btn-ghost btn-lg" href="collections.html">Explore Scents</a>
-            </div>
-          </div>
-        </div>
+      <div class="hero-actions reveal" data-delay="3">
+        <a class="btn primary" href="shop.html">Shop Collection</a>
+        <a class="btn soft" href="collections.html">Explore Scents</a>
       </div>
-      <div class="scroll-indicator">
-        <span>Scroll</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"/></svg>
+    </div>
+
+    <div class="hero-banner-card reveal" data-delay="2">
+      <span class="banner-pill">Best Seller</span>
+      <span class="hero-banner-visual bottle-wrap" id="heroBottle"></span>
+      <h2>Red Tobacco — our signature blend.</h2>
+      <p>A powerful blend of tobacco, cinnamon, oud, saffron, amber and vanilla.</p>
+      <div class="banner-stats" id="stats">
+        <div><strong data-count="4">0</strong><span>Fragrances</span></div>
+        <div><strong data-count="500" data-suffix="+">0</strong><span>Customers</span></div>
+        <div><strong data-count="98" data-suffix="%">0</strong><span>Satisfaction</span></div>
       </div>
-    </section>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">Scroll</div>
+  </section>
 
-    <!-- Featured products -->
-    <section class="section">
-      <div class="container">
-        <div class="section-head-row">
-          <div class="section-heading">
-            <p class="eyebrow reveal">Signature Collection</p>
-            <h2 class="reveal reveal-delay-1">Our Signature Collection</h2>
-            <p class="reveal reveal-delay-2">Four compositions, each with a distinct character — chosen for the way they wear, not just the way they smell in a store.</p>
-          </div>
-          <a class="btn btn-secondary" href="shop.html">View All</a>
-        </div>
-        <div class="product-grid" id="featuredGrid"></div>
+  <!-- ================= MARQUEE ================= -->
+  <div class="marquee" title="Explore a fragrance family">
+    <div class="marquee-track" id="marqueeTrack"></div>
+  </div>
+
+  <!-- ================= WHY CHOOSE US ================= -->
+  <section class="section" id="why" aria-labelledby="why-heading">
+    <div class="section-head reveal">
+      <p class="section-label">Why Mobee Scents</p>
+      <h2 id="why-heading">Built for people who want to be remembered.</h2>
+      <p>Premium ingredients, honest compositions, and a team that actually knows the notes — not just the marketing.</p>
+    </div>
+    <div class="grid-4" id="servicesGrid"></div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="section feature-split" id="about" aria-labelledby="about-heading">
+    <div class="reveal" data-delay="1">
+      <div class="photo-frame">
+        <div class="photo-frame-inner"><span class="bottle-wrap" id="aboutBottle"></span></div>
       </div>
-    </section>
-
-    <!-- Fragrance notes -->
-    <section class="section section-cream">
-      <div class="container">
-        <div class="section-heading center">
-          <p class="eyebrow reveal">The Vocabulary of Scent</p>
-          <h2 class="reveal reveal-delay-1">Explore Fragrance Notes</h2>
-          <p class="reveal reveal-delay-2">Every Mobee Scents fragrance is built from these eight families. Choose one to browse fragrances built around it.</p>
-        </div>
-        <div class="notes-grid" id="notesGrid"></div>
+    </div>
+    <div>
+      <p class="section-label reveal">Our Story</p>
+      <h2 id="about-heading" class="reveal" data-delay="1">The art of making an impression.</h2>
+      <p class="reveal" data-delay="2" style="margin-top:.8rem;color:var(--muted)">At Mobee Scents, we believe fragrance is more than a scent. It is a memory, a mood, and a personal statement. Our collection brings together distinctive fragrances for people who want their presence to be remembered.</p>
+      <div class="grid-2 reveal" data-delay="3">
+        <article class="info-card"><div class="icon" aria-hidden="true">✓</div><h3>Handpicked Ingredients</h3><p>Every note chosen for quality, not cost.</p></article>
+        <article class="info-card"><div class="icon" aria-hidden="true">✓</div><h3>Small-Batch Blending</h3><p>Compositions crafted in considered batches.</p></article>
       </div>
-    </section>
+      <div class="about-highlight reveal" data-delay="3"><h3>Four families, one standard</h3><p>Warm spicy, woody spicy, woody aromatic, and leather — each chosen for longevity and character.</p></div>
+    </div>
+  </section>
 
-    <!-- Why choose us -->
-    <section class="section">
-      <div class="container">
-        <div class="section-heading center">
-          <p class="eyebrow reveal">Why Mobee Scents</p>
-          <h2 class="reveal reveal-delay-1">Why Choose Mobee Scents</h2>
-        </div>
-        <div class="benefits-grid" id="benefitsGrid"></div>
+  <!-- ================= JOURNEY (scrollytelling) ================= -->
+  <section class="journey dark-panel" id="journey" aria-labelledby="journey-heading">
+    <div class="section-head reveal">
+      <p class="section-label">From Note to Bottle</p>
+      <h2 id="journey-heading">How a Mobee Scents fragrance comes together.</h2>
+      <p>Keep scrolling. This is how every bottle is made — start to finish.</p>
+    </div>
+    <div class="timeline" id="timeline">
+      <div class="timeline-fill" id="timelineFill"></div>
+      <div class="step"><span class="tag">Stage 1</span><h3>Sourcing rare ingredients</h3><p>Saffron, oud, sandalwood and other raw materials sourced for quality of material, not just cost.</p></div>
+      <div class="step"><span class="tag">Stage 2</span><h3>Blending top, heart &amp; base notes</h3><p>Each composition is built in layers — an opening, a heart, and a base that lingers.</p></div>
+      <div class="step"><span class="tag">Stage 3</span><h3>Resting &amp; aging</h3><p>The blend rests so the notes marry properly, developing depth and character.</p></div>
+      <div class="step"><span class="tag">Stage 4</span><h3>Quality testing</h3><p>Every batch is tested for balance, strength, and eight-hour-plus longevity.</p></div>
+      <div class="step"><span class="tag">Stage 5</span><h3>Bottling &amp; finishing</h3><p>Hand-finished with gold detailing and a label that matches the fragrance inside.</p></div>
+      <div class="step"><span class="tag">Stage 6</span><h3>Delivered to you</h3><p>Dispatched within 24 hours and tracked from our door to yours.</p></div>
+    </div>
+  </section>
+
+  <!-- ================= SIGNATURE COLLECTION ================= -->
+  <section class="section" id="shop-preview" aria-labelledby="shop-heading">
+    <div class="section-head-row reveal">
+      <div class="section-head" style="margin-bottom:0;">
+        <p class="section-label">Signature Collection</p>
+        <h2 id="shop-heading">Our Signature Collection</h2>
+        <p>Four compositions, each with a distinct character — chosen for the way they wear, not just the way they smell in a store.</p>
       </div>
-    </section>
+      <a class="btn soft" href="shop.html">View All</a>
+    </div>
+    <div class="product-grid" id="featuredGrid"></div>
+  </section>
 
-    <!-- Brand story -->
-    <section class="section">
-      <div class="container">
-        <div class="story-grid">
-          <div class="story-image" id="storyImage">
-            <div class="story-image-inner">
-              <span class="bottle-wrap" id="storyBottle" style="width:55%;"></span>
-              <span class="est-label">Est. Mobee Scents</span>
-            </div>
-            <div class="story-curtain"></div>
-          </div>
-          <div class="story-content">
-            <p class="eyebrow">Our Story</p>
-            <h2>The Art of Making an Impression</h2>
-            <p>At Mobee Scents, we believe fragrance is more than a scent. It is a memory, a mood, and a personal statement. Our collection brings together distinctive fragrances for people who want their presence to be remembered.</p>
-            <a class="text-link" style="margin-top:2rem;" href="about.html">Read Our Story
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13,5 20,12 13,19"/></svg>
-            </a>
-          </div>
+  <!-- ================= FRAGRANCE NOTES ================= -->
+  <section class="section" id="notes" aria-labelledby="notes-heading">
+    <div class="section-head center reveal">
+      <p class="section-label">The Vocabulary of Scent</p>
+      <h2 id="notes-heading">Explore Fragrance Notes</h2>
+      <p>Every Mobee Scents fragrance is built from these eight families. Choose one to browse fragrances built around it.</p>
+    </div>
+    <div class="notes-grid" id="notesGrid"></div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="section dark-panel" id="testimonials" aria-labelledby="testimonials-heading">
+    <div class="section-head center reveal">
+      <p class="section-label">Client Voices</p>
+      <h2 id="testimonials-heading">What Our Customers Say</h2>
+    </div>
+    <div class="rail-wrap"><div class="rail" id="testimonialRail"></div></div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section" id="faq" aria-labelledby="faq-heading">
+    <div class="section-head reveal">
+      <p class="section-label">FAQ</p>
+      <h2 id="faq-heading">Common questions, quick answers.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details><summary>How long do Mobee Scents fragrances last?</summary><p>Most compositions are built for eight-hour-plus wear thanks to high-concentration oils and well-balanced base notes.</p></details>
+      <details><summary>What sizes are available?</summary><p>Every fragrance comes in 30ml, 50ml, and 100ml — pick your size in the Quick View or product page.</p></details>
+      <details><summary>How fast is delivery?</summary><p>Orders are dispatched within 24 hours. Major cities receive orders in 1–3 business days; see our Shipping Policy for full details.</p></details>
+      <details><summary>Can I return a fragrance?</summary><p>Unopened items can be returned within 7 days. Damaged or incorrect orders are replaced at no extra cost — see our Return Policy.</p></details>
+    </div>
+  </section>
+
+  <!-- ================= NEWSLETTER ================= -->
+  <section class="section" id="newsletter" aria-labelledby="newsletter-heading">
+    <div class="newsletter-card reveal" id="newsletterWrap">
+      <p class="section-label" style="justify-content:center;">Stay Connected</p>
+      <h2 id="newsletter-heading">Join the Mobee Scents Community</h2>
+      <p style="margin-top:.8rem;color:var(--muted)">Receive exclusive offers, fragrance recommendations, and updates on new arrivals.</p>
+      <form class="newsletter-form-row" id="newsletterForm">
+        <div class="newsletter-field">
+          <input type="email" id="newsletterInput" required placeholder="Enter your email address" />
+          <p class="field-error" id="newsletterError" hidden>Please enter a valid email address.</p>
         </div>
-      </div>
-    </section>
+        <button type="submit" class="btn primary">Subscribe</button>
+      </form>
+    </div>
+  </section>
 
-    <!-- Testimonials -->
-    <section class="section section-dark">
-      <div class="container">
-        <div class="section-heading center">
-          <p class="eyebrow reveal">Client Voices</p>
-          <h2 class="reveal reveal-delay-1">What Our Customers Say</h2>
-        </div>
-        <div class="testimonial-wrap">
-          <svg class="testimonial-quote-icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M9.5 8.5c-2.5 0-4 2-4 4.5s1.5 4 3.5 4c1.3 0 2-.7 2-1.8 0-1-.7-1.7-1.7-1.7-.3 0-.5 0-.7.1.2-1.6 1.5-3 3.2-3.4L11 8.6a6.3 6.3 0 0 0-1.5-.1Zm9 0c-2.5 0-4 2-4 4.5s1.5 4 3.5 4c1.3 0 2-.7 2-1.8 0-1-.7-1.7-1.7-1.7-.3 0-.5 0-.7.1.2-1.6 1.5-3 3.2-3.4L20 8.6a6.3 6.3 0 0 0-1.5-.1Z"/></svg>
-          <div class="testimonial-slide" id="testimonialSlide"></div>
-          <div class="testimonial-controls">
-            <button id="testimonialPrev" aria-label="Previous testimonial"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg></button>
-            <div class="testimonial-dots" id="testimonialDots"></div>
-            <button id="testimonialNext" aria-label="Next testimonial"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,18 15,12 9,6"/></svg></button>
-          </div>
-        </div>
-      </div>
-    </section>
+</main>
 
-    <!-- Newsletter -->
-    <section class="section section-cream">
-      <div class="container">
-        <div class="newsletter-wrap" id="newsletterWrap">
-          <p class="eyebrow">Stay Connected</p>
-          <h2 class="font-serif" style="font-size:2rem;margin-top:1rem;">Join the Mobee Scents Community</h2>
-          <p style="margin-top:1rem;color:rgba(28,26,23,.6);">Receive exclusive offers, fragrance recommendations, and updates on new arrivals.</p>
-          <form class="newsletter-form-row" id="newsletterForm">
-            <div class="newsletter-field">
-              <input type="email" id="newsletterInput" required placeholder="Enter your email address" />
-              <p class="field-error" id="newsletterError" hidden>Please enter a valid email address.</p>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg">Subscribe</button>
-          </form>
-        </div>
-      </div>
-    </section>
+<div id="site-footer"></div>
 
-  </main>
-
-  <div id="site-footer"></div>
-
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/icons.js"></script>
-  <script src="assets/js/storage.js"></script>
-  <script src="assets/js/reveal.js"></script>
-  <script src="assets/js/layout.js"></script>
-  <script src="assets/js/product-card.js"></script>
-  <script src="assets/js/quickview.js"></script>
-  <script src="assets/js/home.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/icons.js"></script>
+<script src="assets/js/storage.js"></script>
+<script src="assets/js/reveal.js"></script>
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/product-card.js"></script>
+<script src="assets/js/quickview.js"></script>
+<script src="assets/js/home.js"></script>
 </body>
 </html>

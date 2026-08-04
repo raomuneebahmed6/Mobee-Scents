@@ -4,7 +4,7 @@ function productCardHTML(p, index) {
   const wishlisted = Store.isWishlisted(p.id);
   const delay = (index % 4) + 1;
   return `
-  <article class="product-card reveal reveal-delay-${delay}" data-id="${p.id}">
+  <article class="product-card reveal" data-delay="${delay}" data-id="${p.id}">
     ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ""}
     <button class="wishlist-toggle${wishlisted ? " is-active" : ""}" data-action="wishlist" aria-label="Toggle wishlist">${icon("heart")}</button>
     <button class="product-image" data-action="quickview" aria-label="Quick view ${p.name}">

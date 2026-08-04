@@ -1,42 +1,4 @@
-/* Home page: hero animation, featured products, fragrance notes, benefits,
-   brand story reveal, testimonials slider, newsletter. */
-
-function initHero() {
-  const hero = document.getElementById("hero");
-  if (!hero) return;
-
-  const bottleMount = document.getElementById("heroBottle");
-  bottleMount.innerHTML = `<span class="hero-visual-breathe">${bottleSVG("facet", "#a3812c", "#e0c069")}</span>`;
-
-  const titleEl = document.getElementById("heroTitle");
-  const words = titleEl.textContent.trim().split(" ");
-  titleEl.innerHTML = words
-    .map((w) => `<span class="word"><span>${w}${w === words[words.length - 1] ? "" : "&nbsp;"}</span></span>`)
-    .join("");
-
-  requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add("is-ready")));
-
-  // Mouse-follow parallax for the bottle
-  const inner = document.getElementById("heroVisualInner");
-  hero.addEventListener("mousemove", (e) => {
-    const rect = hero.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-    const y = ((e.clientY - rect.top) / rect.height) * 2 - 1;
-    inner.style.transform = `translate(${x * 14}px, ${y * 10}px)`;
-  });
-
-  // Scroll parallax + fade
-  window.addEventListener(
-    "scroll",
-    () => {
-      const progress = Math.min(1, window.scrollY / hero.offsetHeight);
-      const visual = document.getElementById("heroVisualWrap");
-      visual.style.transform = `translateY(${progress * 140}px)`;
-      document.getElementById("heroContent").style.opacity = String(1 - progress / 0.7);
-    },
-    { passive: true }
-  );
-}
+/* Home page: hero bottle art, marquee, services, about, testimonials rail, newsletter. */
 
 function initFeaturedProducts() {
   const mount = document.getElementById("featuredGrid");
@@ -48,7 +10,7 @@ function initFragranceNotes() {
   if (!mount) return;
   mount.innerHTML = FRAGRANCE_NOTES.map(
     (n, i) => `
-    <a class="note-card reveal reveal-delay-${(i % 4) + 1}" href="shop.html?note=${encodeURIComponent(n.name)}">
+    <a class="note-card reveal" data-delay="${(i % 4) + 1}" href="shop.html?note=${encodeURIComponent(n.name)}">
       <span class="note-icon">${n.name[0]}${icon(n.icon)}</span>
       <span class="note-name">${n.name}</span>
       <span class="note-desc">${n.description}</span>
@@ -57,77 +19,88 @@ function initFragranceNotes() {
   initReveal(mount);
 }
 
-function initBenefits() {
-  const mount = document.getElementById("benefitsGrid");
+const HOME_BENEFITS = [
+  { title: "Premium Quality", description: "Sourced from renowned houses and formulated with high-concentration oils.", icon: "gem" },
+  { title: "Long-Lasting Fragrances", description: "Eight-hour-plus wear built on rich, well-balanced compositions.", icon: "clock" },
+  { title: "Secure Shopping", description: "Encrypted checkout and verified payment partners, every order.", icon: "shield-check" },
+  { title: "Fast Delivery", description: "Dispatched within 24 hours, tracked from our door to yours.", icon: "truck" },
+];
+
+function initServices() {
+  const mount = document.getElementById("servicesGrid");
   if (!mount) return;
-  mount.innerHTML = BENEFITS.map(
+  mount.innerHTML = HOME_BENEFITS.map(
     (b, i) => `
-    <div class="benefit reveal reveal-delay-${(i % 3) + 1}">
-      <span class="benefit-icon">${icon(b.icon)}</span>
-      <div><h3>${b.title}</h3><p>${b.description}</p></div>
-    </div>`
+    <article class="service-card reveal" data-delay="${i}">
+      <div class="icon">${icon(b.icon)}</div>
+      <h3>${b.title}</h3>
+      <p>${b.description}</p>
+    </article>`
   ).join("");
   initReveal(mount);
 }
 
-function initBrandStory() {
-  const visual = document.getElementById("storyImage");
-  if (!visual) return;
-  document.getElementById("storyBottle").innerHTML = bottleSVG("round", "#6b4a2f", "#c9a876");
+function initAboutVisual() {
+  const mount = document.getElementById("aboutBottle");
+  if (mount) mount.innerHTML = bottleSVG("round", "#6b4a2f", "#c9a876");
+}
+
+function initMarquee() {
+  const track = document.getElementById("marqueeTrack");
+  if (!track) return;
+  const notes = FRAGRANCE_NOTES.map((n) => n.name.toUpperCase());
+  const items = notes
+    .map((n) => `<a href="shop.html?note=${encodeURIComponent(n[0] + n.slice(1).toLowerCase())}"><b>✧</b> ${n}</a>`)
+    .join("");
+  track.innerHTML = items + items; // duplicate for seamless loop
+}
+
+function initCounters() {
+  const statsEl = document.getElementById("stats");
+  if (!statsEl) return;
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function run() {
+    statsEl.querySelectorAll("[data-count]").forEach((n) => {
+      const target = +n.dataset.count || 0;
+      const suffix = n.dataset.suffix || "";
+      const dur = 1400;
+      const t0 = performance.now();
+      (function tick(t) {
+        const p = Math.min((t - t0) / dur, 1);
+        n.textContent = Math.floor(target * (1 - Math.pow(1 - p, 3))) + (p === 1 ? suffix : "");
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  }
+  if (!("IntersectionObserver" in window) || reduceMotion) return run();
   const io = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          visual.classList.add("in-view");
-          io.unobserve(entry.target);
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          io.unobserve(e.target);
+          run();
         }
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.5 }
   );
-  io.observe(visual);
+  io.observe(statsEl);
 }
 
-function initTestimonials() {
-  const slideEl = document.getElementById("testimonialSlide");
-  const dotsEl = document.getElementById("testimonialDots");
-  if (!slideEl) return;
-  let index = 0;
-
-  function render() {
-    const t = TESTIMONIALS[index];
-    slideEl.innerHTML = `
-      <p class="testimonial-text">&ldquo;${t.review}&rdquo;</p>
-      <div class="testimonial-meta">
-        ${starsMarkup(t.rating)}
-        <div class="testimonial-person">
-          <span class="testimonial-avatar">${t.initials}</span>
-          <div><p class="name">${t.name}</p><p class="loc">${t.location}</p></div>
-        </div>
-      </div>`;
-    dotsEl.querySelectorAll("button").forEach((b, i) => b.classList.toggle("active", i === index));
-  }
-
-  dotsEl.innerHTML = TESTIMONIALS.map((_, i) => `<button aria-label="Go to testimonial ${i + 1}" data-i="${i}"></button>`).join("");
-  dotsEl.querySelectorAll("button").forEach((b) => {
-    b.addEventListener("click", () => {
-      index = Number(b.getAttribute("data-i"));
-      render();
-    });
-  });
-  document.getElementById("testimonialPrev").addEventListener("click", () => {
-    index = (index - 1 + TESTIMONIALS.length) % TESTIMONIALS.length;
-    render();
-  });
-  document.getElementById("testimonialNext").addEventListener("click", () => {
-    index = (index + 1) % TESTIMONIALS.length;
-    render();
-  });
-  render();
-  setInterval(() => {
-    index = (index + 1) % TESTIMONIALS.length;
-    render();
-  }, 7000);
+function initTestimonialRail() {
+  const rail = document.getElementById("testimonialRail");
+  if (!rail) return;
+  const cardHTML = (t) => `
+    <div class="quote-card">
+      ${starsMarkup(t.rating)}
+      <p class="quote">&ldquo;${t.review}&rdquo;</p>
+      <div class="who">
+        <span class="avatar">${t.initials}</span>
+        <div><p class="name">${t.name}</p><p class="loc">${t.location}</p></div>
+      </div>
+    </div>`;
+  const cards = TESTIMONIALS.map(cardHTML).join("");
+  rail.innerHTML = cards + cards; // duplicate for seamless loop
 }
 
 function initNewsletter() {
@@ -148,11 +121,13 @@ function initNewsletter() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  initHero();
+  document.getElementById("heroBottle") && (document.getElementById("heroBottle").innerHTML = bottleSVG("facet", "#a3812c", "#e0c069"));
   initFeaturedProducts();
   initFragranceNotes();
-  initBenefits();
-  initBrandStory();
-  initTestimonials();
+  initServices();
+  initAboutVisual();
+  initMarquee();
+  initCounters();
+  initTestimonialRail();
   initNewsletter();
 });

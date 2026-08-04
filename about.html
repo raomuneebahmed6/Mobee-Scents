@@ -5,79 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Us | Mobee Scents</title>
   <meta name="description" content="The story behind Mobee Scents — a fragrance house built around composition, character, and lasting impressions." />
-  <meta name="theme-color" content="#1c1a17" />
+  <meta name="theme-color" content="#1C1A17" />
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body data-page="about">
+<body data-page="about" data-header-theme="light">
   <a class="skip-link" href="#main-content">Skip to content</a>
 
+  <div id="top-bar-root"></div>
   <div id="site-header"></div>
-  <div id="mobile-menu-root"></div>
   <div id="search-overlay-root"></div>
   <div id="cart-drawer-root"></div>
 
   <main id="main-content">
-    <section class="about-hero">
-      <div class="container inner">
-        <p class="eyebrow">About Mobee Scents</p>
-        <h1>The Art of Making an Impression</h1>
-        <p>At Mobee Scents, we believe fragrance is more than a scent. It is a memory, a mood, and a personal statement. Our collection brings together distinctive fragrances for people who want their presence to be remembered.</p>
+    <section class="dark-panel" style="max-width:none;border-radius:0;padding-top:11rem;padding-bottom:5rem;">
+      <div style="max-width:46rem;margin:0 auto;padding:0 clamp(1.1rem,5vw,4rem);">
+        <p class="section-label">About Mobee Scents</p>
+        <h1 style="font-size:clamp(2.2rem,4.5vw,3.2rem);color:#fff;margin-top:.7rem;">The Art of Making an Impression</h1>
+        <p style="margin-top:1.4rem;max-width:40rem;font-size:.95rem;line-height:1.7;color:#C9BFAA;">At Mobee Scents, we believe fragrance is more than a scent. It is a memory, a mood, and a personal statement. Our collection brings together distinctive fragrances for people who want their presence to be remembered.</p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="story-grid">
-          <div class="reveal story-image" style="aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;background:rgba(239,231,216,.6);">
-            <span class="bottle-wrap" id="aboutBottle" style="width:45%;"></span>
-          </div>
-          <div class="story-content">
-            <p class="eyebrow reveal">How We Started</p>
-            <h2 class="reveal reveal-delay-1">Built From a Simple Frustration</h2>
-            <p class="reveal reveal-delay-2">Too many fragrance retailers optimize for shelf appeal — bright packaging, loud marketing, thin compositions. We wanted something different: a small, focused catalogue of fragrances we would actually wear ourselves, described honestly, and backed by people who know the notes by heart.</p>
-            <p class="reveal reveal-delay-3">Today, Mobee Scents ships across Pakistan with a growing collection built around four families — warm spicy, woody spicy, woody aromatic, and leather — each chosen for its longevity and character.</p>
-          </div>
+    <section class="section feature-split">
+      <div class="reveal" data-delay="1">
+        <div class="photo-frame">
+          <div class="photo-frame-inner"><span class="bottle-wrap" id="aboutBottle" style="width:48%;"></span></div>
         </div>
+      </div>
+      <div>
+        <p class="section-label reveal">How We Started</p>
+        <h2 class="reveal" data-delay="1">Built From a Simple Frustration</h2>
+        <p class="reveal" data-delay="2" style="margin-top:.9rem;color:var(--muted);">Too many fragrance retailers optimize for shelf appeal — bright packaging, loud marketing, thin compositions. We wanted something different: a small, focused catalogue of fragrances we would actually wear ourselves, described honestly, and backed by people who know the notes by heart.</p>
+        <p class="reveal" data-delay="3" style="margin-top:.8rem;color:var(--muted);">Today, Mobee Scents ships across Pakistan with a growing collection built around four families — warm spicy, woody spicy, woody aromatic, and leather — each chosen for its longevity and character.</p>
       </div>
     </section>
 
-    <section class="section section-cream">
-      <div class="container">
-        <p class="eyebrow reveal">What Guides Us</p>
-        <h2 class="reveal reveal-delay-1" style="font-family:var(--font-serif);font-size:2.25rem;max-width:32rem;">Our Values</h2>
-        <div class="values-grid">
-          <div class="value-card reveal reveal-delay-1">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 6-9 12L3 9Z"/><path d="M3 9h18M9 3l3 6 3-6M12 9l-3 12M12 9l3 12"/></svg>
-            <h3>Composition Over Trend</h3>
-            <p>We choose fragrances for how they develop over hours, not how they photograph on a shelf.</p>
-          </div>
-          <div class="value-card reveal reveal-delay-2">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 16-6 16-16-9 0-16 7-16 16Z"/><path d="M4 20c0-5 3-9 8-11.5"/></svg>
-            <h3>Considered Sourcing</h3>
-            <p>Every note in our collection is selected for quality of material, not just cost.</p>
-          </div>
-          <div class="value-card reveal reveal-delay-3">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5S6 16.8 4.2 12.8"/><path d="M4.5 12.5C2.8 9 5 5.5 8.4 5.5c1.7 0 2.9.8 3.6 1.8.7-1 1.9-1.8 3.6-1.8 3.4 0 5.6 3.5 3.9 7"/><path d="m8 12 2.3 2.3a1.6 1.6 0 0 0 2.3 0l3.9-3.9a1.6 1.6 0 0 1 2.3 0l1.2 1.2"/></svg>
-            <h3>A Real Team</h3>
-            <p>Questions about a scent, a size, or an order reach a person — not a queue.</p>
-          </div>
-        </div>
+    <section class="section" style="background:var(--white);border-radius:var(--radius);border:1px solid var(--line);">
+      <div class="section-head reveal">
+        <p class="section-label">What Guides Us</p>
+        <h2>Our Values</h2>
+      </div>
+      <div class="grid-4" id="valuesGrid">
+        <article class="service-card reveal" data-delay="0">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l3 6-9 12L3 9Z"/><path d="M3 9h18M9 3l3 6 3-6M12 9l-3 12M12 9l3 12"/></svg></div>
+          <h3>Composition Over Trend</h3>
+          <p>We choose fragrances for how they develop over hours, not how they photograph on a shelf.</p>
+        </article>
+        <article class="service-card reveal" data-delay="1">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 16-6 16-16-9 0-16 7-16 16Z"/><path d="M4 20c0-5 3-9 8-11.5"/></svg></div>
+          <h3>Considered Sourcing</h3>
+          <p>Every note in our collection is selected for quality of material, not just cost.</p>
+        </article>
+        <article class="service-card reveal" data-delay="2">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5S6 16.8 4.2 12.8"/><path d="M4.5 12.5C2.8 9 5 5.5 8.4 5.5c1.7 0 2.9.8 3.6 1.8.7-1 1.9-1.8 3.6-1.8 3.4 0 5.6 3.5 3.9 7"/><path d="m8 12 2.3 2.3a1.6 1.6 0 0 0 2.3 0l3.9-3.9a1.6 1.6 0 0 1 2.3 0l1.2 1.2"/></svg></div>
+          <h3>A Real Team</h3>
+          <p>Questions about a scent, a size, or an order reach a person — not a queue.</p>
+        </article>
+        <article class="service-card reveal" data-delay="3">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></svg></div>
+          <h3>Honest Pricing</h3>
+          <p>No inflated "sale" tags — the price you see is the price the fragrance is worth.</p>
+        </article>
       </div>
     </section>
 
-    <section class="section cta-center">
-      <div class="container" style="max-width:32rem;">
-        <div class="reveal">
-          <h2>Find Your Signature Scent</h2>
-          <p>Explore the full collection and discover the fragrance that speaks for you.</p>
-          <a class="btn btn-primary btn-lg" href="shop.html">Shop Collection
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13,5 20,12 13,19"/></svg>
-          </a>
-        </div>
+    <section class="section" style="text-align:center;">
+      <div class="reveal" style="max-width:32rem;margin:0 auto;">
+        <h2>Find Your Signature Scent</h2>
+        <p style="margin-top:1rem;color:var(--muted);">Explore the full collection and discover the fragrance that speaks for you.</p>
+        <a class="btn primary" href="shop.html" style="margin-top:2rem;">Shop Collection</a>
       </div>
     </section>
   </main>
