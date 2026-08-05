@@ -60,20 +60,17 @@ function starsMarkup(rating, size) {
   return out;
 }
 
-/* ---- Logo monogram: double-ring gold seal with interlocked M/S ---- */
+/* ---- Logo monogram: interlocked M/S with an atomizer-spray accent, per brand mark ---- */
 function logoMarkSVG(dark) {
-  const ring = dark ? "#e7d9ae" : "#b3924f";
-  const ink = dark ? "#f6f1e7" : "#1c1a17";
+  const ink = dark ? "#F8F1E8" : "#2B1B3D";
   return `<svg viewBox="0 0 48 52" width="36" height="39" role="img" aria-label="Mobee Scents monogram">
-    <circle cx="34" cy="6" r="1.4" fill="${ring}" opacity="0.85"/>
-    <circle cx="30" cy="9.5" r="1" fill="${ring}" opacity="0.6"/>
-    <circle cx="37.5" cy="10.5" r="0.75" fill="${ring}" opacity="0.5"/>
-    <circle cx="24" cy="30" r="20" fill="none" stroke="${ring}" stroke-width="1"/>
-    <circle cx="24" cy="30" r="16.5" fill="none" stroke="${ring}" stroke-width="0.6"/>
-    <path d="M14 15 Q9 22 12 30" fill="none" stroke="${ring}" stroke-width="0.9" stroke-linecap="round" opacity="0.8"/>
-    <path d="M34 15 Q39 22 36 30" fill="none" stroke="${ring}" stroke-width="0.9" stroke-linecap="round" opacity="0.8"/>
-    <text x="24" y="38" text-anchor="middle" font-family="var(--font-serif, serif)" font-size="22" fill="${ink}">M</text>
-    <text x="31.5" y="40.5" text-anchor="middle" font-family="var(--font-serif, serif)" font-size="11" fill="${ring}">S</text>
+    <circle cx="31" cy="6" r="1.2" fill="${ink}" opacity="0.8"/>
+    <circle cx="27.5" cy="8.7" r="0.9" fill="${ink}" opacity="0.55"/>
+    <circle cx="34" cy="9.5" r="0.65" fill="${ink}" opacity="0.4"/>
+    <rect x="25" y="11" width="4.5" height="5.5" rx="1" fill="${ink}"/>
+    <path d="M27.2 16.5v2.6" stroke="${ink}" stroke-width="1.3" stroke-linecap="round"/>
+    <text x="14" y="41" text-anchor="middle" font-family="var(--font-serif, serif)" font-size="25" font-weight="600" fill="${ink}">M</text>
+    <text x="35" y="41" text-anchor="middle" font-family="var(--font-serif, serif)" font-size="18" font-weight="600" fill="${ink}">S</text>
   </svg>`;
 }
 

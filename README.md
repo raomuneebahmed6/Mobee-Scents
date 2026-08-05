@@ -2,7 +2,7 @@
 
 Premium, fully responsive fragrance e-commerce website for **Mobee Scents** — built with plain **HTML, CSS, and JavaScript**. No framework, no build step, no npm install required.
 
-The component/motion system (top announcement bar, floating pill header with dropdown nav, hero with parallax blobs + stat banner card, marquee ticker, service cards, dark scrollytelling "journey" section, wave footer, WhatsApp float, etc.) is modeled on lmshandling.com, recolored into the ivory/charcoal/gold palette with Cormorant Garamond headings.
+The component/motion system (top announcement bar, floating pill header with dropdown nav, hero with parallax blobs + stat banner card, marquee ticker, service cards, dark scrollytelling "journey" section, wave footer, WhatsApp float, etc.) is modeled on lmshandling.com. The palette (deep plum + gold on warm ivory) and the "MS" monogram are taken from the brand's own promotional artwork.
 
 ## Tech Stack
 

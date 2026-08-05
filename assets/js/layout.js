@@ -214,7 +214,7 @@ function renderFooter() {
   const mount = document.getElementById("site-footer");
   if (!mount) return;
   mount.innerHTML = `
-    <div class="footer-wave" aria-hidden="true"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0 42C180 74 380 6 640 18s430 52 560 34c110-15 190-24 240-14v32H0Z" fill="#1C1A17"/></svg></div>
+    <div class="footer-wave" aria-hidden="true"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0 42C180 74 380 6 640 18s430 52 560 34c110-15 190-24 240-14v32H0Z" fill="#2B1B3D"/></svg></div>
     <footer class="footer">
       <div class="footer-top">
         <div class="footer-brand">

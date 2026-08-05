@@ -3,19 +3,19 @@
    (component system adapted from lmshandling.com, recolored)
    ============================================================ */
 :root{
-  --ink:#1C1A17;           /* deep charcoal */
-  --ink-2:#5B4425;         /* warm bronze — links/accents */
-  --paper:#F6F1E7;         /* ivory */
+  --ink:#2B1B3D;           /* deep plum — brand monogram colour */
+  --ink-2:#5C3A6B;         /* warm plum — links/accents */
+  --paper:#F8F1E8;         /* warm ivory */
   --white:#FFFFFF;
-  --gold:#B3924F;          /* muted brand gold */
-  --gold-soft:#F1E6CC;
-  --teal:#8A6A34;          /* deeper gold for readable small text/links */
-  --line:rgba(28,26,23,.14);
-  --text:#332C22;
-  --muted:#6B6152;
-  --ring:linear-gradient(90deg,#D9BA76,#B3924F,#8A6A34);
+  --gold:#C9A227;          /* rich brand gold */
+  --gold-soft:#F3E4B8;
+  --teal:#9C7A1F;          /* deep gold for readable small text/links */
+  --line:rgba(43,27,61,.14);
+  --text:#332740;
+  --muted:#6E5F7C;
+  --ring:linear-gradient(90deg,#E0C264,#C9A227,#6B3F7A);
   --radius:18px;
-  --shadow:0 18px 50px -20px rgba(28,26,23,.28);
+  --shadow:0 18px 50px -20px rgba(43,27,61,.28);
   --display:"Cormorant Garamond","Times New Roman",serif;
   --body:"Jost",system-ui,sans-serif;
   --mono:"Jost",system-ui,sans-serif;
@@ -23,7 +23,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 [hidden]{display:none !important}
 html{scroll-behavior:smooth}
-body{font-family:var(--body);font-weight:300;color:var(--text);background:var(--paper);background-image:radial-gradient(rgba(28,26,23,.05) 1px,transparent 1px);background-size:28px 28px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:var(--body);font-weight:300;color:var(--text);background:var(--paper);background-image:radial-gradient(rgba(43,27,61,.05) 1px,transparent 1px);background-size:28px 28px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img,svg{max-width:100%;display:block}
 .icon{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 a{color:inherit;text-decoration:none}
