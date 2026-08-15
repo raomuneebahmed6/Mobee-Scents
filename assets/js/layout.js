@@ -42,20 +42,6 @@ function renderChrome() {
   document.getElementById("whatsappFloat").href = `https://wa.me/${SITE_CONFIG.whatsappNumber}`;
 }
 
-function renderTopBar() {
-  const mount = document.getElementById("top-bar-root");
-  if (!mount) return;
-  mount.innerHTML = `
-    <div class="top-bar" id="topBar">
-      <a class="top-bar-msg" href="shop.html"><span class="tb-full">✨ Discover Your Signature Scent — Shop the Collection</span><span class="tb-short">✨ Shop the Collection</span></a>
-      <div class="top-bar-social">
-        <a href="${SITE_CONFIG.social.instagram}" aria-label="Instagram">${icon("instagram")}</a>
-        <a href="${SITE_CONFIG.social.facebook}" aria-label="Facebook">${icon("facebook")}</a>
-        <a href="${SITE_CONFIG.social.twitter}" aria-label="Twitter">${icon("twitter")}</a>
-      </div>
-    </div>`;
-}
-
 function renderHeader() {
   const mount = document.getElementById("site-header");
   if (!mount) return;
@@ -288,11 +274,10 @@ function initLoader() {
   setTimeout(done, 1800);
 }
 
-/* ---------- scroll: progress bar, header pill, top-bar hide, parallax, timeline, to-top ---------- */
+/* ---------- scroll: progress bar, header pill, parallax, timeline, to-top ---------- */
 function initScrollEffects() {
   const progress = document.getElementById("scrollProgress");
   const header = document.getElementById("siteHeader");
-  const topBar = document.getElementById("topBar");
   const toTop = document.getElementById("toTop");
   const pEls = document.querySelectorAll("[data-parallax]");
   const timeline = document.getElementById("timeline");
@@ -310,7 +295,6 @@ function initScrollEffects() {
       header.classList.toggle("scrolled", scrolled);
       if (wantsLightHeader) header.classList.toggle("is-light", !scrolled);
     }
-    if (topBar) topBar.classList.toggle("hide", h.scrollTop > 30);
     if (toTop) toTop.classList.toggle("show", h.scrollTop > 600);
     if (!reduceMotion) {
       pEls.forEach((el) => {
@@ -440,7 +424,6 @@ function initInteractions() {
 
 function initLayout() {
   renderChrome();
-  renderTopBar();
   renderHeader();
   renderSearchOverlay();
   renderCartDrawer();

@@ -3,19 +3,21 @@
    (component system adapted from lmshandling.com, recolored)
    ============================================================ */
 :root{
-  --ink:#2B1B3D;           /* deep plum — brand monogram colour */
-  --ink-2:#5C3A6B;         /* warm plum — links/accents */
+  --ink:#14123A;           /* deep navy-indigo — matches the logo monogram */
+  --ink-2:#4A2F52;         /* warm plum — links/accents */
+  --berry:#8A3F5E;         /* dusty berry/rose — matches the logo's floral + cap accent */
+  --berry-soft:#F0DCE2;
   --paper:#F8F1E8;         /* warm ivory */
   --white:#FFFFFF;
-  --gold:#C9A227;          /* rich brand gold */
+  --gold:#BB8F3D;          /* muted brass gold — matches the logo's gold band */
   --gold-soft:#F3E4B8;
   --teal:#9C7A1F;          /* deep gold for readable small text/links */
-  --line:rgba(43,27,61,.14);
-  --text:#332740;
-  --muted:#6E5F7C;
-  --ring:linear-gradient(90deg,#E0C264,#C9A227,#6B3F7A);
+  --line:rgba(20,18,58,.14);
+  --text:#2A2438;
+  --muted:#665C74;
+  --ring:linear-gradient(90deg,#E0C264,#BB8F3D,#8A3F5E);
   --radius:18px;
-  --shadow:0 18px 50px -20px rgba(43,27,61,.28);
+  --shadow:0 18px 50px -20px rgba(20,18,58,.28);
   --display:"Cormorant Garamond","Times New Roman",serif;
   --body:"Jost",system-ui,sans-serif;
   --mono:"Jost",system-ui,sans-serif;
@@ -48,20 +50,8 @@ ul{list-style:none}
 /* ---------- scroll progress ---------- */
 .scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--ring);z-index:150}
 
-/* ---------- top bar ---------- */
-.top-bar{position:fixed;top:0;left:0;right:0;z-index:101;height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem);background:var(--ink);transition:transform .3s ease,opacity .3s ease}
-.top-bar.hide{transform:translateY(-100%);opacity:0;pointer-events:none}
-.top-bar-msg{color:var(--paper);font-weight:500;font-size:.8rem;display:flex;align-items:center;gap:.4rem}
-.top-bar-msg:hover{color:var(--gold-soft)}
-.top-bar-msg .tb-short{display:none}
-.top-bar-social{display:flex;align-items:center;gap:.4rem}
-.top-bar-social a{width:24px;height:24px;border-radius:6px;background:rgba(246,241,231,.12);color:var(--paper);display:grid;place-items:center;transition:.2s}
-.top-bar-social a:hover{background:var(--gold);color:var(--ink)}
-.top-bar-social svg{width:12px;height:12px}
-@media (max-width:480px){.top-bar-msg .tb-full{display:none}.top-bar-msg .tb-short{display:inline}}
-
 /* ---------- header ---------- */
-.site-header{position:fixed;top:40px;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem clamp(1rem,4vw,3rem);transition:.35s cubic-bezier(.2,.7,.2,1)}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem clamp(1rem,4vw,3rem);transition:.35s cubic-bezier(.2,.7,.2,1)}
 .site-header.scrolled{top:10px;left:10px;right:10px;border-radius:999px;background:rgba(246,241,231,.94);backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 12px 32px -14px rgba(28,26,23,.35);padding:.5rem 1.4rem}
 .brand{display:flex;align-items:center;gap:.6rem;color:var(--ink)}
 .brand img{height:38px;width:auto;object-fit:contain}
@@ -112,7 +102,7 @@ ul{list-style:none}
 
 /* ---------- shared section ---------- */
 .section{padding:clamp(4rem,8vw,6.5rem) clamp(1.1rem,5vw,4rem);max-width:1200px;margin:0 auto}
-.page-head{padding:clamp(9.5rem,14vw,11rem) clamp(1.1rem,5vw,4rem) 1rem;max-width:1200px;margin:0 auto}
+.page-head{padding:clamp(7rem,12vw,8.5rem) clamp(1.1rem,5vw,4rem) 1rem;max-width:1200px;margin:0 auto}
 .page-head p.section-label{margin-bottom:.6rem}
 .page-head h1{font-size:clamp(2.2rem,4.5vw,3.2rem)}
 .page-head>p:last-child{margin-top:1rem;max-width:38rem;color:var(--muted)}
@@ -148,11 +138,11 @@ ul{list-style:none}
 .text-link:hover::after{margin-left:4px}
 
 /* ---------- hero ---------- */
-.hero{min-height:100svh;display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;padding-top:11rem;position:relative;isolation:isolate}
+.hero{min-height:100svh;display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center;padding-top:8.5rem;position:relative;isolation:isolate}
 .hero-bg{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
 .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;will-change:transform}
 .blob.b1{width:420px;height:420px;background:var(--gold-soft);top:-100px;right:-90px}
-.blob.b2{width:340px;height:340px;background:#E7DCC3;bottom:-60px;left:-110px}
+.blob.b2{width:340px;height:340px;background:var(--berry-soft);bottom:-60px;left:-110px}
 .float-icon{position:absolute;color:var(--ink-2);opacity:.85;filter:drop-shadow(0 10px 18px rgba(28,26,23,.15));animation:floaty 4.5s ease-in-out infinite}
 .float-icon svg{width:100%;height:100%}
 .float-icon.f1{width:50px;top:16%;right:6%;color:var(--gold);animation-delay:.4s}
@@ -252,12 +242,12 @@ ul{list-style:none}
 .product-card::after{content:"";position:absolute;left:0;top:0;height:4px;width:0;background:var(--ring);transition:width .4s;z-index:2}
 .product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
 .product-card:hover::after{width:100%}
-.product-badge{position:absolute;top:1rem;left:1rem;z-index:3;background:var(--ink);color:var(--paper);padding:.3rem .7rem;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.product-badge{position:absolute;top:1rem;left:1rem;z-index:3;background:var(--berry);color:var(--paper);padding:.3rem .7rem;border-radius:999px;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
 .wishlist-toggle{position:absolute;top:1rem;right:1rem;z-index:3;padding:.5rem;border-radius:999px;background:rgba(255,255,255,.92);box-shadow:0 2px 8px rgba(0,0,0,.08);opacity:0;transition:.3s}
 .product-card:hover .wishlist-toggle,.wishlist-toggle.is-active{opacity:1}
 .wishlist-toggle:active{transform:scale(.9)}
 .wishlist-toggle .icon{width:16px;height:16px;color:var(--muted)}
-.wishlist-toggle.is-active .icon{fill:var(--gold);color:var(--gold)}
+.wishlist-toggle.is-active .icon{fill:var(--berry);color:var(--berry)}
 .product-image{position:relative;display:block;width:100%;aspect-ratio:3/4;overflow:hidden;padding:1.6rem;background:linear-gradient(to bottom,var(--gold-soft),var(--white))}
 .product-image .bottle-wrap{height:100%;width:100%;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
 .product-card:hover .product-image .bottle-wrap{transform:scale(1.06)}
@@ -537,7 +527,7 @@ ul{list-style:none}
    RESPONSIVE
    ============================================================ */
 @media (max-width:1024px){
-  .hero{grid-template-columns:1fr;gap:2.2rem;padding-top:9.5rem;min-height:auto;padding-bottom:4rem}
+  .hero{grid-template-columns:1fr;gap:2.2rem;padding-top:7.5rem;min-height:auto;padding-bottom:4rem}
   .hero-banner-card{max-width:560px}
   .grid-4{grid-template-columns:1fr 1fr}
   .feature-split{grid-template-columns:1fr;gap:2rem}
