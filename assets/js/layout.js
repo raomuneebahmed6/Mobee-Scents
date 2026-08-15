@@ -36,7 +36,7 @@ function renderChrome() {
      <a class="whatsapp-float" id="whatsappFloat" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">${icon("message-circle")}</a>
      <button class="to-top" id="toTop" aria-label="Back to top">${icon("chevron-down", "")}</button>`
   );
-  document.getElementById("loaderMark").innerHTML = logoMarkSVG(true);
+  document.getElementById("loaderMark").innerHTML = `<img src="assets/img/logo.png" alt="Mobee Scents" />`;
   const toTopIcon = document.querySelector("#toTop svg");
   if (toTopIcon) toTopIcon.style.transform = "rotate(180deg)";
   document.getElementById("whatsappFloat").href = `https://wa.me/${SITE_CONFIG.whatsappNumber}`;
@@ -67,7 +67,7 @@ function renderHeader() {
   mount.innerHTML = `
     <header class="site-header" id="siteHeader">
       <a class="brand" href="index.html" aria-label="Mobee Scents — home">
-        <span id="headerLogoMark"></span>
+        <span id="headerLogoMark"><img src="assets/img/logo.png" alt="Mobee Scents" /></span>
         <span><strong>Mobee <em>Scents</em></strong><small>Signature Fragrance House</small></span>
       </a>
       <nav class="main-nav" id="mainNav" aria-label="Main navigation">
@@ -98,8 +98,6 @@ function renderHeader() {
       </div>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </header>`;
-
-  document.getElementById("headerLogoMark").innerHTML = logoMarkSVG(false);
 }
 
 function renderSearchOverlay() {
@@ -228,7 +226,7 @@ function renderFooter() {
     <footer class="footer">
       <div class="footer-top">
         <div class="footer-brand">
-          <div class="footer-brand-mark"><span id="footerLogoMark"></span><strong>Mobee <em>Scents</em></strong></div>
+          <div class="footer-brand-mark"><span id="footerLogoMark"><img src="assets/img/logo.png" alt="Mobee Scents" /></span><strong>Mobee <em>Scents</em></strong></div>
           <p>Mobee Scents is a fragrance house dedicated to compositions that are worn, remembered, and reached for again. Discover your signature scent.</p>
           <div class="social-links">
             <a href="${SITE_CONFIG.social.instagram}" aria-label="Instagram">${icon("instagram", "social-svg")}</a>
@@ -254,7 +252,6 @@ function renderFooter() {
       <div class="footer-bottom"><p>© <span id="footerYear"></span> Mobee Scents. All rights reserved. · Discover Your Signature Scent</p></div>
     </footer>`;
 
-  document.getElementById("footerLogoMark").innerHTML = logoMarkSVG(true);
   document.getElementById("footerYear").textContent = new Date().getFullYear();
 }
 
