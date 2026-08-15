@@ -40,6 +40,49 @@ function initServices() {
   initReveal(mount);
 }
 
+const FEATURE_STRIP_ITEMS = [
+  { label: "Premium Ingredients", icon: "gem" },
+  { label: "Long-Lasting Wear", icon: "clock" },
+  { label: "Secure Checkout", icon: "shield-check" },
+  { label: "Fast Delivery", icon: "truck" },
+];
+
+function initFeatureStrip() {
+  const mount = document.getElementById("featureStrip");
+  if (!mount) return;
+  mount.innerHTML = FEATURE_STRIP_ITEMS.map(
+    (f) => `<div class="feature-strip-item">${icon(f.icon)}<span>${f.label}</span></div>`
+  ).join("");
+}
+
+const SHOP_CATEGORIES = [
+  { label: "Men", desc: "Bold & confident", href: "shop.html?gender=Men", icon: "flame" },
+  { label: "Women", desc: "Soft & elegant", href: "shop.html?gender=Women", icon: "flower" },
+  { label: "Unisex", desc: "For everyone", href: "shop.html?gender=Unisex", icon: "sparkles" },
+  { label: "Best Sellers", desc: "Customer favorites", href: "shop.html?sort=rating", icon: "star" },
+];
+
+function initCategoryGrid() {
+  const mount = document.getElementById("categoryGrid");
+  if (!mount) return;
+  mount.innerHTML = SHOP_CATEGORIES.map(
+    (c, i) => `
+    <a class="category-card reveal" data-delay="${i}" href="${c.href}">
+      <span class="category-icon">${icon(c.icon)}</span>
+      <strong>${c.label}</strong>
+      <span>${c.desc}</span>
+    </a>`
+  ).join("");
+  initReveal(mount);
+}
+
+function initCtaWhatsapp() {
+  const link = document.getElementById("ctaWhatsappLink");
+  if (!link) return;
+  const message = "Hi! I'd like to ask about a custom gift set or bulk order.";
+  link.href = `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+
 function initMarquee() {
   const track = document.getElementById("marqueeTrack");
   if (!track) return;
@@ -120,6 +163,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initFeaturedProducts();
   initFragranceNotes();
   initServices();
+  initFeatureStrip();
+  initCategoryGrid();
+  initCtaWhatsapp();
   initMarquee();
   initCounters();
   initTestimonialRail();
