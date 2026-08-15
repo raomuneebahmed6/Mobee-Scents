@@ -13,6 +13,7 @@ const PRODUCTS = [
     slug: "red-tobacco",
     name: "Red Tobacco",
     category: "Warm Spicy",
+    gender: "Men",
     noteFamilies: ["Tobacco", "Spicy", "Amber", "Vanilla", "Woody"],
     description:
       "A powerful blend of tobacco, cinnamon, oud, saffron, amber, vanilla and precious woods. Bold, smoky and unmistakably confident.",
@@ -40,6 +41,7 @@ const PRODUCTS = [
     slug: "1-million",
     name: "1 Million",
     category: "Woody Spicy",
+    gender: "Men",
     noteFamilies: ["Woody", "Spicy", "Amber", "Leather", "Floral"],
     description:
       "A bold fragrance featuring blood mandarin, cinnamon, rose, leather, amber and patchouli — audacious, magnetic, and made to be noticed.",
@@ -67,6 +69,7 @@ const PRODUCTS = [
     slug: "santal-33",
     name: "Santal 33",
     category: "Woody Aromatic",
+    gender: "Unisex",
     noteFamilies: ["Woody", "Leather", "Floral"],
     description:
       "A sophisticated combination of sandalwood, cedarwood, cardamom, violet, leather and musk. Understated, refined, and endlessly wearable.",
@@ -93,6 +96,7 @@ const PRODUCTS = [
     slug: "tuscan-leather",
     name: "Tuscan Leather",
     category: "Leather",
+    gender: "Unisex",
     noteFamilies: ["Leather", "Amber", "Floral", "Woody"],
     description:
       "A rich fragrance combining raspberry, saffron, jasmine, leather, suede, amber and woods — sensual, opulent, and deeply memorable.",
@@ -113,6 +117,61 @@ const PRODUCTS = [
     bottleVariant: "rect",
     accent: "#2b1c14",
     accentSoft: "#8a5a3b",
+  },
+  {
+    id: "rose-vanille",
+    slug: "rose-vanille",
+    name: "Rose Vanille",
+    category: "Floral",
+    gender: "Women",
+    noteFamilies: ["Floral", "Vanilla", "Amber", "Fresh"],
+    description:
+      "A graceful blend of Bulgarian rose, bergamot, jasmine, vanilla, amber and soft musk — elegant, warm, and effortlessly feminine.",
+    notes: {
+      top: ["Bergamot", "Pink Pepper"],
+      heart: ["Bulgarian Rose", "Jasmine"],
+      base: ["Vanilla", "Amber", "Musk"],
+    },
+    price: 16900,
+    compareAtPrice: 19500,
+    rating: 4.8,
+    reviewCount: 96,
+    badge: "New Arrival",
+    sizes: [
+      { label: "30ml", price: 10900 },
+      { label: "50ml", price: 16900 },
+      { label: "100ml", price: 22900 },
+    ],
+    bottleVariant: "round",
+    accent: "#9c2b4e",
+    accentSoft: "#e8a8bd",
+  },
+  {
+    id: "velvet-bloom",
+    slug: "velvet-bloom",
+    name: "Velvet Bloom",
+    category: "Floral",
+    gender: "Women",
+    noteFamilies: ["Floral", "Fresh", "Vanilla"],
+    description:
+      "A luminous composition of peony, lychee, white musk and vanilla — soft, radiant, and made for everyday wear.",
+    notes: {
+      top: ["Lychee", "Mandarin"],
+      heart: ["Peony", "Freesia"],
+      base: ["White Musk", "Vanilla"],
+    },
+    price: 14500,
+    rating: 4.6,
+    reviewCount: 61,
+    badge: "Editor's Pick",
+    sizes: [
+      { label: "30ml", price: 9500 },
+      { label: "50ml", price: 14500 },
+      { label: "100ml", price: 19900 },
+    ],
+    bottleVariant: "facet",
+    accent: "#7a4a8a",
+    accentSoft: "#d9b8e8",
   },
 ];
 
@@ -181,9 +240,9 @@ const BENEFITS = [
 
 // TO CUSTOMIZE: contact details, used across contact.html and layout.js footer.
 const SITE_CONFIG = {
-  whatsappNumber: "923001234567",
+  whatsappNumber: "923006622266",
   email: "support@mobeescents.com",
-  phone: "+92 300 1234567",
+  phone: "+92 300 6622266",
   address: "Gulberg III, Lahore, Pakistan",
   hours: "Mon – Sat, 10:00 AM – 8:00 PM PKT",
   social: { instagram: "#", facebook: "#", twitter: "#" },

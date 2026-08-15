@@ -8,10 +8,14 @@ const NAV_LINKS = [
 ];
 
 const COLLECTION_LINKS = [
+  { label: "Men", href: "shop.html?gender=Men" },
+  { label: "Women", href: "shop.html?gender=Women" },
+  { label: "Unisex", href: "shop.html?gender=Unisex" },
   { label: "Warm Spicy", href: "shop.html?category=Warm+Spicy" },
   { label: "Woody Spicy", href: "shop.html?category=Woody+Spicy" },
   { label: "Woody Aromatic", href: "shop.html?category=Woody+Aromatic" },
   { label: "Leather", href: "shop.html?category=Leather" },
+  { label: "Floral", href: "shop.html?category=Floral" },
   { label: "View All Collections", href: "collections.html" },
 ];
 
@@ -183,8 +187,8 @@ function updateCartDrawer() {
     <div class="cart-lines no-scrollbar">${linesHTML}</div>
     <div class="cart-summary">
       <div class="cart-subtotal-row"><span>Subtotal</span><span class="value">${formatPrice(Store.cartSubtotal())}</span></div>
-      <p class="cart-note">Shipping and taxes calculated at checkout.</p>
-      <button class="btn primary full" id="cartCheckoutBtn">Checkout</button>
+      <p class="cart-note">Shipping and taxes calculated at checkout. Payment is confirmed via WhatsApp.</p>
+      <button class="btn primary full" id="cartCheckoutBtn">${icon("message-circle")} Checkout via WhatsApp</button>
     </div>`;
 
   bodyEl.querySelectorAll(".cart-line").forEach((row) => {
@@ -204,8 +208,14 @@ function updateCartDrawer() {
   const checkoutBtn = document.getElementById("cartCheckoutBtn");
   if (checkoutBtn) {
     checkoutBtn.addEventListener("click", () => {
+      const orderLines = lines
+        .map((line) => `• ${line.product.name} (${line.size}) x${line.quantity} — ${formatPrice(line.unitPrice * line.quantity)}`)
+        .join("\n");
+      const message =
+        `Hi Mobee Scents! I'd like to order:\n\n${orderLines}\n\nSubtotal: ${formatPrice(Store.cartSubtotal())}\n\nPlease confirm availability and payment details.`;
+      window.open(`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
       document.querySelector(".cart-summary").innerHTML =
-        '<p class="cart-success-msg">Thank you — your order request has been noted. Our team will reach out to confirm delivery details.</p>';
+        '<p class="cart-success-msg">Order sent on WhatsApp — our team will confirm payment and delivery details there.</p>';
     });
   }
 }
