@@ -8,10 +8,14 @@ const NAV_LINKS = [
 ];
 
 const COLLECTION_LINKS = [
+  { label: "Men", href: "shop.html?gender=Men" },
+  { label: "Women", href: "shop.html?gender=Women" },
+  { label: "Unisex", href: "shop.html?gender=Unisex" },
   { label: "Warm Spicy", href: "shop.html?category=Warm+Spicy" },
   { label: "Woody Spicy", href: "shop.html?category=Woody+Spicy" },
   { label: "Woody Aromatic", href: "shop.html?category=Woody+Aromatic" },
   { label: "Leather", href: "shop.html?category=Leather" },
+  { label: "Floral", href: "shop.html?category=Floral" },
   { label: "View All Collections", href: "collections.html" },
 ];
 
@@ -32,7 +36,7 @@ function renderChrome() {
      <a class="whatsapp-float" id="whatsappFloat" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">${icon("message-circle")}</a>
      <button class="to-top" id="toTop" aria-label="Back to top">${icon("chevron-down", "")}</button>`
   );
-  document.getElementById("loaderMark").innerHTML = logoMarkSVG(true);
+  document.getElementById("loaderMark").innerHTML = `<img src="assets/img/logo.png" alt="Mobee Scents" />`;
   const toTopIcon = document.querySelector("#toTop svg");
   if (toTopIcon) toTopIcon.style.transform = "rotate(180deg)";
   document.getElementById("whatsappFloat").href = `https://wa.me/${SITE_CONFIG.whatsappNumber}`;
@@ -63,7 +67,7 @@ function renderHeader() {
   mount.innerHTML = `
     <header class="site-header" id="siteHeader">
       <a class="brand" href="index.html" aria-label="Mobee Scents — home">
-        <span id="headerLogoMark"></span>
+        <span id="headerLogoMark"><img src="assets/img/logo.png" alt="Mobee Scents" /></span>
         <span><strong>Mobee <em>Scents</em></strong><small>Signature Fragrance House</small></span>
       </a>
       <nav class="main-nav" id="mainNav" aria-label="Main navigation">
@@ -94,8 +98,6 @@ function renderHeader() {
       </div>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </header>`;
-
-  document.getElementById("headerLogoMark").innerHTML = logoMarkSVG(false);
 }
 
 function renderSearchOverlay() {
@@ -183,8 +185,8 @@ function updateCartDrawer() {
     <div class="cart-lines no-scrollbar">${linesHTML}</div>
     <div class="cart-summary">
       <div class="cart-subtotal-row"><span>Subtotal</span><span class="value">${formatPrice(Store.cartSubtotal())}</span></div>
-      <p class="cart-note">Shipping and taxes calculated at checkout.</p>
-      <button class="btn primary full" id="cartCheckoutBtn">Checkout</button>
+      <p class="cart-note">Shipping and taxes calculated at checkout. Payment is confirmed via WhatsApp.</p>
+      <button class="btn primary full" id="cartCheckoutBtn">${icon("message-circle")} Checkout via WhatsApp</button>
     </div>`;
 
   bodyEl.querySelectorAll(".cart-line").forEach((row) => {
@@ -204,8 +206,14 @@ function updateCartDrawer() {
   const checkoutBtn = document.getElementById("cartCheckoutBtn");
   if (checkoutBtn) {
     checkoutBtn.addEventListener("click", () => {
+      const orderLines = lines
+        .map((line) => `• ${line.product.name} (${line.size}) x${line.quantity} — ${formatPrice(line.unitPrice * line.quantity)}`)
+        .join("\n");
+      const message =
+        `Hi Mobee Scents! I'd like to order:\n\n${orderLines}\n\nSubtotal: ${formatPrice(Store.cartSubtotal())}\n\nPlease confirm availability and payment details.`;
+      window.open(`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
       document.querySelector(".cart-summary").innerHTML =
-        '<p class="cart-success-msg">Thank you — your order request has been noted. Our team will reach out to confirm delivery details.</p>';
+        '<p class="cart-success-msg">Order sent on WhatsApp — our team will confirm payment and delivery details there.</p>';
     });
   }
 }
@@ -218,7 +226,7 @@ function renderFooter() {
     <footer class="footer">
       <div class="footer-top">
         <div class="footer-brand">
-          <div class="footer-brand-mark"><span id="footerLogoMark"></span><strong>Mobee <em>Scents</em></strong></div>
+          <div class="footer-brand-mark"><span id="footerLogoMark"><img src="assets/img/logo.png" alt="Mobee Scents" /></span><strong>Mobee <em>Scents</em></strong></div>
           <p>Mobee Scents is a fragrance house dedicated to compositions that are worn, remembered, and reached for again. Discover your signature scent.</p>
           <div class="social-links">
             <a href="${SITE_CONFIG.social.instagram}" aria-label="Instagram">${icon("instagram", "social-svg")}</a>
@@ -244,7 +252,6 @@ function renderFooter() {
       <div class="footer-bottom"><p>© <span id="footerYear"></span> Mobee Scents. All rights reserved. · Discover Your Signature Scent</p></div>
     </footer>`;
 
-  document.getElementById("footerLogoMark").innerHTML = logoMarkSVG(true);
   document.getElementById("footerYear").textContent = new Date().getFullYear();
 }
 

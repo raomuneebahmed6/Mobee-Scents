@@ -6,7 +6,8 @@
   <title>About Us | Mobee Scents</title>
   <meta name="description" content="The story behind Mobee Scents — a fragrance house built around composition, character, and lasting impressions." />
   <meta name="theme-color" content="#2B1B3D" />
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="assets/img/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -32,14 +33,14 @@
     <section class="section feature-split">
       <div class="reveal" data-delay="1">
         <div class="photo-frame">
-          <div class="photo-frame-inner"><span class="bottle-wrap" id="aboutBottle" style="width:48%;"></span></div>
+          <div class="photo-frame-inner"><img src="assets/img/santal-33-bottle.jpg" alt="Mobee Scents Santal 33 bottle" loading="lazy" /></div>
         </div>
       </div>
       <div>
         <p class="section-label reveal">How We Started</p>
         <h2 class="reveal" data-delay="1">Built From a Simple Frustration</h2>
         <p class="reveal" data-delay="2" style="margin-top:.9rem;color:var(--muted);">Too many fragrance retailers optimize for shelf appeal — bright packaging, loud marketing, thin compositions. We wanted something different: a small, focused catalogue of fragrances we would actually wear ourselves, described honestly, and backed by people who know the notes by heart.</p>
-        <p class="reveal" data-delay="3" style="margin-top:.8rem;color:var(--muted);">Today, Mobee Scents ships across Pakistan with a growing collection built around four families — warm spicy, woody spicy, woody aromatic, and leather — each chosen for its longevity and character.</p>
+        <p class="reveal" data-delay="3" style="margin-top:.8rem;color:var(--muted);">Today, Mobee Scents ships across Pakistan with a growing collection spanning men's, women's, and unisex fragrances — warm spicy, woody spicy, woody aromatic, leather, and floral families — each chosen for its longevity and character.</p>
       </div>
     </section>
 
@@ -88,10 +89,5 @@
   <script src="assets/js/storage.js"></script>
   <script src="assets/js/reveal.js"></script>
   <script src="assets/js/layout.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("aboutBottle").innerHTML = bottleSVG("flask", "#8a2f1f", "#c97a5c");
-    });
-  </script>
 </body>
 </html>

@@ -12,7 +12,7 @@ function productCardHTML(p, index) {
       <span class="quickview-strip">${icon("eye")} Quick View</span>
     </button>
     <div class="product-info">
-      <p class="product-category">${p.category}</p>
+      <p class="product-category">${p.category}${p.gender ? ` · ${p.gender}` : ""}</p>
       <h3 class="product-name">${p.name}</h3>
       <p class="product-desc">${p.description}</p>
       <div class="product-rating">${starsMarkup(p.rating)}<span>(${p.reviewCount})</span></div>

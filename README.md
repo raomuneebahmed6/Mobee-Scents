@@ -60,7 +60,8 @@ assets/
     product-card.js           renderProductGrid() — used by home/shop/wishlist
     quickview.js              Quick View modal (shared)
     home.js, shop.js, collections.js, contact.js, wishlist.js   Page-specific logic
-  img/favicon.svg
+  img/logo.png, favicon.png, favicon-32.png   Brand logo + favicons
+  img/santal-33-bottle.jpg                    Product photography
 ```
 
 ## Where to Customize

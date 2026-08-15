@@ -40,11 +40,6 @@ function initServices() {
   initReveal(mount);
 }
 
-function initAboutVisual() {
-  const mount = document.getElementById("aboutBottle");
-  if (mount) mount.innerHTML = bottleSVG("round", "#6b4a2f", "#c9a876");
-}
-
 function initMarquee() {
   const track = document.getElementById("marqueeTrack");
   if (!track) return;
@@ -125,7 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initFeaturedProducts();
   initFragranceNotes();
   initServices();
-  initAboutVisual();
   initMarquee();
   initCounters();
   initTestimonialRail();

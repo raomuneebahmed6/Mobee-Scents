@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 52" width="48" height="52">
-  <rect x="0" y="2" width="48" height="48" rx="24" fill="#2b1b3d" />
-  <circle cx="31" cy="8" r="1.2" fill="#F3E4B8" opacity="0.85" />
-  <circle cx="27.5" cy="10.7" r="0.9" fill="#F3E4B8" opacity="0.55" />
-  <circle cx="34" cy="11.5" r="0.65" fill="#F3E4B8" opacity="0.4" />
-  <rect x="25" y="13" width="4.5" height="5.5" rx="1" fill="#F3E4B8" />
-  <text x="14" y="43" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="23" font-weight="600" fill="#F8F1E8">M</text>
-  <text x="35" y="43" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="16" font-weight="600" fill="#F8F1E8">S</text>
-</svg>

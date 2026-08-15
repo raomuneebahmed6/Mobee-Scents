@@ -49,7 +49,7 @@ function renderQuickViewBody() {
   const body = document.getElementById("qvBody");
 
   body.innerHTML = `
-    <p class="product-category">${p.category}</p>
+    <p class="product-category">${p.category}${p.gender ? ` · ${p.gender}` : ""}</p>
     <h2>${p.name}</h2>
     <div class="modal-rating">${starsMarkup(p.rating)}<span>${p.rating} (${p.reviewCount} reviews)</span></div>
     <p class="modal-desc">${p.description}</p>

@@ -9,6 +9,7 @@ function initShopPage() {
   let state = {
     q: params.get("q") || "",
     category: params.get("category") || null,
+    gender: params.get("gender") || null,
     note: params.get("note") || null,
     sort: params.get("sort") || "featured",
   };
@@ -16,8 +17,17 @@ function initShopPage() {
   const searchInput = document.getElementById("shopSearchInput");
   const sortSelect = document.getElementById("shopSortSelect");
   const filterRow = document.getElementById("shopFilterRow");
+  const genderRow = document.getElementById("shopGenderRow");
   searchInput.value = state.q;
   sortSelect.value = state.sort;
+
+  const genders = ["Men", "Women", "Unisex"];
+  if (genderRow) {
+    genderRow.innerHTML =
+      `<span class="label">Shop for:</span>` +
+      `<button class="filter-chip${!state.gender ? " active" : ""}" data-gender="">All</button>` +
+      genders.map((g) => `<button class="filter-chip${state.gender === g ? " active" : ""}" data-gender="${g}">${g}</button>`).join("");
+  }
 
   const categories = [...new Set(PRODUCTS.map((p) => p.category))];
   filterRow.innerHTML =
@@ -35,6 +45,7 @@ function initShopPage() {
       );
     }
     if (state.category) list = list.filter((p) => p.category === state.category);
+    if (state.gender) list = list.filter((p) => p.gender === state.gender);
     if (state.note) list = list.filter((p) => p.noteFamilies.includes(state.note));
 
     if (state.sort === "price-asc") list.sort((a, b) => a.price - b.price);
@@ -73,15 +84,27 @@ function initShopPage() {
     applyAndRender();
   });
 
+  if (genderRow) {
+    genderRow.addEventListener("click", (e) => {
+      const chip = e.target.closest(".filter-chip");
+      if (!chip) return;
+      const g = chip.getAttribute("data-gender");
+      state.gender = g || null;
+      genderRow.querySelectorAll(".filter-chip[data-gender]").forEach((c) => c.classList.toggle("active", c === chip));
+      applyAndRender();
+    });
+  }
+
   document.getElementById("filtersToggleBtn").addEventListener("click", () => {
     filterRow.classList.toggle("is-open");
   });
 
   document.getElementById("shopClearFilters").addEventListener("click", () => {
-    state = { q: "", category: null, note: null, sort: "featured" };
+    state = { q: "", category: null, gender: null, note: null, sort: "featured" };
     searchInput.value = "";
     sortSelect.value = "featured";
     filterRow.querySelectorAll(".filter-chip[data-cat]").forEach((c) => c.classList.toggle("active", c.getAttribute("data-cat") === ""));
+    if (genderRow) genderRow.querySelectorAll(".filter-chip[data-gender]").forEach((c) => c.classList.toggle("active", c.getAttribute("data-gender") === ""));
     const noteChip = filterRow.querySelector("[data-note-clear]");
     if (noteChip) noteChip.remove();
     applyAndRender();
