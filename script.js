@@ -54,7 +54,7 @@ $('.cart-open')?.addEventListener('click',openCart);$('.cart-close')?.addEventLi
 $('.menu-btn')?.addEventListener('click',()=>{$('.mobile-nav')?.classList.add('open');refs.overlay?.classList.add('show');document.body.classList.add('menu-open')});$('.mobile-close')?.addEventListener('click',closeAll);
 
 function toast(msg){const t=$('.toast');if(!t)return;t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1700)}
-$$('.quick-add,.add-to-cart').forEach(btn=>btn.addEventListener('click',e=>{
+$$('.add-to-cart').forEach(btn=>btn.addEventListener('click',e=>{
   e.preventDefault();const el=btn.closest('[data-product]')||btn;const qty=+($('#qtyValue')?.textContent||1);const item={name:el.dataset.name||btn.dataset.name||'Mobee Scents Eau de Parfum',price:+(el.dataset.price||btn.dataset.price||2490),img:el.dataset.img||btn.dataset.img||'assets/img/santal-33-bottle.jpg',size:el.dataset.size||btn.dataset.size||$('.size-btn.active')?.textContent||'50ml',qty};
   const found=cart.find(x=>x.name===item.name&&x.size===item.size);found?found.qty+=qty:cart.push(item);save();toast('Added to your bag');openCart();
 }));
@@ -94,5 +94,102 @@ $('.checkout-form')?.addEventListener('submit',e=>{
   toast('Order sent! Confirm it on WhatsApp.');
   f.reset();
 });
+
+function renderProductPage(){
+  const titleEl=$('#pTitle');
+  if(!titleEl||typeof PRODUCTS==='undefined') return;
+  const params=new URLSearchParams(location.search);
+  let slug=params.get('slug')||'after-hours';
+  const testerMatch=slug.match(/^(.+)-(5|10)ml$/);
+  let mode,data,base,size,price,name;
+
+  if(BOXES[slug]){
+    mode='box';data=BOXES[slug];name=data.name;price=data.price;size=data.size;
+  }else if(testerMatch&&PRODUCTS[testerMatch[1]]&&TESTER_SIZES[testerMatch[1]]&&TESTER_SIZES[testerMatch[1]][+testerMatch[2]]){
+    mode='tester';base=testerMatch[1];size=testerMatch[2]+'ml';data=PRODUCTS[base];name=data.name+' — '+size+' Tester';price=TESTER_SIZES[base][+testerMatch[2]];
+  }else if(PRODUCTS[slug]){
+    mode='full';base=slug;data=PRODUCTS[slug];name=data.name;price=data.price;size='50ml';
+  }else{
+    mode='full';base='after-hours';slug='after-hours';data=PRODUCTS['after-hours'];name=data.name;price=data.price;size='50ml';
+  }
+
+  document.title=name+' — Mobee Scents';
+  $('#pCrumbs').textContent='Home / '+(mode==='full'?'Shop':'Testers')+' / '+name;
+  $('#pEyebrow').textContent=mode==='box'?'Discovery box · Eau de parfum':mode==='tester'?'Tester · Eau de parfum':data.badge+' · Eau de parfum';
+  titleEl.textContent=mode==='tester'?data.name+' — Tester':name;
+  $('#pRating').textContent=mode==='box'?'4.8 · 96 reviews':data.rating+' · '+data.reviews+' reviews';
+  $('#pLead').textContent=mode==='box'?'Not sure where to start? This set bundles four of our signature fragrances in '+size+' testers — the easiest way to find your favourite before buying full-size.':data.lead;
+  $('#pPrice').textContent=format(price);
+  const mainImg=mode==='box'?PRODUCTS[data.includes[0]].img:data.img;
+  $('#pImg').src=mainImg;$('#pImg').alt=name;
+  const thumbImgs=mode==='box'?data.includes.slice(0,3).map(s=>PRODUCTS[s].img):[data.img,'assets/img/santal-33-bottle.jpg',data.img];
+  $$('#pThumbs img').forEach((t,i)=>t.src=thumbImgs[i]||mainImg);
+
+  if(mode==='box'){
+    $('#pNotesGrid').style.display='none';
+    $('#pIncludedWrap').style.display='';
+    $('#pIncluded').innerHTML=data.includes.map(s=>`<div class="note-card"><b>${PRODUCTS[s].name}</b><span>${PRODUCTS[s].sub}</span></div>`).join('');
+    $('#pSizeBlock').style.display='none';
+    $('#pScentMeter').style.display='none';
+    $('#pAccTitle1').textContent='What\'s inside the box';
+    $('#pAccBody1').textContent='Four '+size+' testers, one of each: '+data.includes.map(s=>PRODUCTS[s].name).join(', ')+'. Perfect for gifting or for anyone still deciding on a signature scent.';
+    $('#pAccTitle2').textContent='Tester credit *';
+    $('#pAccBody2').textContent='Message us on WhatsApp with your order number when you upgrade any of these to a full-size bottle within 30 days, and we\'ll credit that tester\'s price toward it.';
+  }else{
+    $('#pNotesGrid').style.display='';
+    $('#pIncludedWrap').style.display='none';
+    $('#pNotesGrid').innerHTML=`<div class="note-card"><b>Top</b><span>${data.top}</span></div><div class="note-card"><b>Heart</b><span>${data.heart}</span></div><div class="note-card"><b>Base</b><span>${data.base}</span></div>`;
+    $('#pScentMeter').style.display='';
+    const longevityBand=v=>v>=85?'10+ hrs':v>=70?'8–10 hrs':v>=50?'5–7 hrs':'3–4 hrs';
+    const strengthBand=v=>v>=75?'Strong':v>=55?'Moderate':'Soft';
+    const sweetBand=v=>v>=65?'Sweet':v>=40?'Medium':'Dry';
+    const freshBand=v=>v>=65?'Fresh':v>=40?'Balanced':'Warm';
+    $('#mLongevity').style.width=data.longevity+'%';$('#mLongevityLabel').textContent=longevityBand(data.longevity);
+    $('#mProjection').style.width=data.projection+'%';$('#mProjectionLabel').textContent=strengthBand(data.projection);
+    $('#mSweetness').style.width=data.sweetness+'%';$('#mSweetnessLabel').textContent=sweetBand(data.sweetness);
+    $('#mFreshness').style.width=data.freshness+'%';$('#mFreshnessLabel').textContent=freshBand(data.freshness);
+
+    $('#pSizeBlock').style.display='';
+    if(mode==='tester'){
+      $('#pSizeLabel').textContent='Choose tester size';
+      $('#pSizeRow').innerHTML=[5,10].map(n=>`<button class="size-btn${(n+'ml'===size)?' active':''}" data-goto="${base}-${n}ml">${n}ml</button>`).join('');
+      $$('#pSizeRow .size-btn').forEach(b=>b.onclick=()=>location.href='product.html?slug='+b.dataset.goto);
+      $('#pAccTitle1').textContent='Why try a tester first?';
+      $('#pAccBody1').textContent='Fragrance wears differently on every skin. A tester lets you experience the full development — top, heart and base notes — over real days before investing in a 50ml or 100ml bottle.';
+      $('#pAccTitle2').textContent='Tester credit *';
+      $('#pAccBody2').textContent='Message us on WhatsApp with your tester order number when you upgrade to a full-size bottle within 30 days, and we\'ll deduct the tester price from your total.';
+    }else{
+      $('#pSizeLabel').textContent='Choose size';
+      $('#pSizeRow').innerHTML=['30ml','50ml','100ml'].map(s=>`<button class="size-btn${s==='50ml'?' active':''}">${s}</button>`).join('');
+      $$('#pSizeRow .size-btn').forEach(b=>b.onclick=()=>{$$('#pSizeRow .size-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active')});
+      $('#pAccTitle1').textContent='How it smells';
+      $('#pAccBody1').textContent=data.smells;
+      $('#pAccTitle2').textContent='Best time to wear';
+      $('#pAccBody2').textContent=data.wear;
+    }
+  }
+
+  const addBtn=$('#pAddBtn');
+  addBtn.dataset.name=name;addBtn.dataset.price=price;addBtn.dataset.img=mainImg;addBtn.dataset.size=size;
+  addBtn.textContent='Add to bag — '+format(price);
+
+  let related=[];
+  if(mode==='box'){
+    $('#pRelatedTitle').textContent='More to explore';
+    const otherBox=slug==='tester-box-5ml'?'tester-box-10ml':'tester-box-5ml';
+    related.push({slug:otherBox,name:BOXES[otherBox].name,price:BOXES[otherBox].price,img:PRODUCTS[BOXES[otherBox].includes[0]].img,sub:'4 fragrances, one box'});
+    data.includes.slice(0,2).forEach(k=>related.push({slug:k,name:PRODUCTS[k].name,price:PRODUCTS[k].price,img:PRODUCTS[k].img,sub:PRODUCTS[k].sub}));
+  }else if(mode==='tester'){
+    $('#pRelatedTitle').textContent='Other testers & boxes';
+    const otherN=size==='5ml'?10:5;
+    related.push({slug:base+'-'+otherN+'ml',name:data.name+' — '+otherN+'ml Tester',price:TESTER_SIZES[base][otherN],img:data.img,sub:data.sub});
+    related.push({slug:'tester-box-5ml',name:BOXES['tester-box-5ml'].name,price:BOXES['tester-box-5ml'].price,img:PRODUCTS[BOXES['tester-box-5ml'].includes[0]].img,sub:'4 fragrances, one box'});
+  }else{
+    $('#pRelatedTitle').textContent='Similar profiles';
+    Object.keys(PRODUCTS).filter(k=>k!==base).slice(0,2).forEach(k=>related.push({slug:k,name:PRODUCTS[k].name,price:PRODUCTS[k].price,img:PRODUCTS[k].img,sub:PRODUCTS[k].sub}));
+  }
+  $('#pRelated').innerHTML=related.map(r=>`<article class="product-card" data-product data-name="${r.name}" data-price="${r.price}" data-img="${r.img}"><div class="product-media"><a href="product.html?slug=${r.slug}"><img src="${r.img}" alt="${r.name}"></a><a href="product.html?slug=${r.slug}" class="quick-add">View Details</a></div><div class="product-info"><h3 class="product-title"><a href="product.html?slug=${r.slug}">${r.name}</a></h3><div class="product-sub">${r.sub}</div><div class="price">${format(r.price)}</div></div></article>`).join('');
+}
+renderProductPage();
 
 renderCart();
