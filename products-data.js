@@ -78,6 +78,46 @@ const PRODUCTS = {
     longevity: 88, projection: 72, sweetness: 66, freshness: 24,
     smells: 'Opens with a brief citrus-pepper flash before settling into rich labdanum-amber and a warm vanilla-woods base.',
     wear: 'Best for winter, evenings, and anyone who loves warm, sweet, resinous scents.'
+  },
+  'tuscan-leather': {
+    name: 'Tuscan Leather', price: 3290, badge: 'Niche', meta: 'Unisex', cat: 'unisex woody',
+    rating: 4.7, reviews: 58, sub: 'Raspberry · Leather · Amber',
+    img: 'assets/img/tuscan-leather.png',
+    top: 'Raspberry, Saffron', heart: 'Leather, Suede', base: 'Amber, Thyme, Olibanum',
+    lead: 'A bold, full-bodied leather built around tart raspberry and rugged suede — distinctive, long-lasting, and unmistakably premium.',
+    longevity: 90, projection: 76, sweetness: 40, freshness: 30,
+    smells: 'Opens with a sharp raspberry-saffron burst, moves into rich leather and suede, and settles into warm amber and thyme.',
+    wear: 'Best for evenings, colder months, and anyone who wants a scent that makes a statement.'
+  },
+  'red-tobacco': {
+    name: 'Red Tobacco', price: 2990, badge: 'New', meta: 'For Him', cat: 'men woody',
+    rating: 4.6, reviews: 47, sub: 'Tobacco · Cocoa · Vanilla',
+    img: 'assets/img/red-tobacco.png',
+    top: 'Tobacco Leaf, Spices', heart: 'Dried Fruits, Cocoa', base: 'Vanilla, Tonka Bean, Amber',
+    lead: 'A rich, dessert-like tobacco with dried fruit and cocoa at its heart — warm, inviting and built to last all night.',
+    longevity: 88, projection: 70, sweetness: 74, freshness: 26,
+    smells: 'Spiced tobacco leaf opens into sweet dried fruit and cocoa, finishing on a smooth vanilla-tonka base.',
+    wear: 'Perfect for cold evenings, celebrations, and anyone who loves warm gourmand fragrances.'
+  },
+  'janan-sports': {
+    name: 'Janan Sports', price: 2090, badge: 'New', meta: 'For Him', cat: 'men woody',
+    rating: 4.5, reviews: 39, sub: 'Bergamot · Marine · Musk',
+    img: 'assets/img/janan-sports.png',
+    top: 'Bergamot, Mint', heart: 'Marine Notes, Lavender', base: 'Musk, Cedar, Ambroxan',
+    lead: 'A clean, energetic fresh scent built for the gym, the commute and everything in between — light, sporty and easy to wear daily.',
+    longevity: 62, projection: 55, sweetness: 30, freshness: 82,
+    smells: 'Crisp bergamot and mint open into an airy marine-lavender heart, grounded by clean musk and cedar.',
+    wear: 'Ideal for daytime, workouts, summer, and anyone who wants a low-effort everyday fresh scent.'
+  },
+  'dior-sauvage': {
+    name: 'Dior Sauvage', price: 2890, badge: 'Popular', meta: 'For Him', cat: 'men woody',
+    rating: 4.8, reviews: 220, sub: 'Bergamot · Pepper · Ambroxan',
+    img: 'assets/img/dior-sauvage.png',
+    top: 'Calabrian Bergamot, Pepper', heart: 'Sichuan Pepper, Lavender, Geranium', base: 'Ambroxan, Cedar, Vanilla',
+    lead: 'Our most requested impression — fresh peppery bergamot over a clean, radiant ambroxan-cedar base. Instantly recognizable, endlessly versatile.',
+    longevity: 80, projection: 78, sweetness: 36, freshness: 70,
+    smells: 'Bright bergamot and pepper open into a spicy lavender-geranium heart, drying down to a smooth, radiant ambroxan-cedar trail.',
+    wear: 'Works year-round for almost any occasion — office, dates, everyday wear.'
   }
 };
 
