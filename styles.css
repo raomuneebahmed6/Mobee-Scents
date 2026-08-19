@@ -95,7 +95,7 @@ button{cursor:pointer}
 .badge{position:absolute;left:12px;top:12px;background:#fff;border:1px solid rgba(0,0,0,.07);padding:6px 9px;border-radius:999px;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;z-index:2}
 .badge.sale{background:var(--wine);color:#fff;border-color:var(--wine)}
 .wish{position:absolute;right:12px;top:12px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.9);display:grid;place-items:center;z-index:2}.wish svg{width:16px;height:16px}
-.quick-add{position:absolute;left:12px;right:12px;bottom:12px;border:none;background:rgba(20,21,46,.94);color:#fff;border-radius:10px;padding:12px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;transform:translateY(60px);opacity:0;transition:.3s}
+.quick-add{position:absolute;left:12px;right:12px;bottom:12px;display:block;text-align:center;text-decoration:none;border:none;background:rgba(20,21,46,.94);color:#fff;border-radius:10px;padding:12px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;transform:translateY(60px);opacity:0;transition:.3s}
 .product-card:hover .quick-add{transform:translateY(0);opacity:1}
 .product-info{padding:14px 3px 0}
 .product-meta{display:flex;justify-content:space-between;gap:12px;color:#92897d;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
@@ -123,9 +123,12 @@ button{cursor:pointer}
 .footer .logo-mark{background:#fff;border-radius:16px;padding:9px;height:68px;width:68px}
 .footer .logo small{color:#b6b2cc}
 .social-row{display:flex;gap:12px;margin-top:22px}
-.social-icon{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;color:#fff;transition:.2s;flex:none}
-.social-icon:hover{background:var(--wine);border-color:var(--wine);color:#fff;transform:translateY(-2px)}
-.social-icon svg{width:16px;height:16px}
+.footer .social-icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;transition:.2s;flex:none;box-shadow:0 4px 12px rgba(0,0,0,.25);margin:0}
+.footer .social-icon:hover{color:#fff;transform:translateY(-3px) scale(1.06);box-shadow:0 8px 18px rgba(0,0,0,.35)}
+.social-icon svg{width:17px;height:17px}
+.social-icon.wa{background:#25d366}
+.social-icon.ig{background:radial-gradient(circle at 30% 110%,#fdf497,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
+.social-icon.fb{background:#1877f2}
 .footer-contact span{display:block;color:#aaa;margin:8px 0;font-size:12px}
 
 /* Collection / shop pages */
