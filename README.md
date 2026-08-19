@@ -11,7 +11,7 @@ The layout (top announcement + service bars, sticky header with dropdown nav, sp
 - Vanilla JavaScript (`script.js`, no libraries/dependencies) — cart drawer, mobile nav, quick-add, shop filters, accordions, scroll reveal, and form toasts
 - Google Fonts (DM Serif Display + Manrope) loaded via `<link>` tag
 - Cart persisted client-side via `localStorage`
-- Product photography: real Mobee Scents bottle shots (`assets/img/santal-33-bottle.jpg` etc.) plus a few placeholder stock images for products that don't have photography yet — swap these out in each page's `data-img`/`src` attributes as real shots become available
+- Product photography: real Mobee Scents bottle shots for every product in `assets/img/` (Dior Sauvage, Creed Aventus, Dunhill Desire, Janan Gold, Janan Sports, Tuscan Leather, Red Tobacco, Silk Musk) — no stock/placeholder imagery
 
 No backend/database — this is a front-end storefront. "Checkout" and "Track Order" show a confirmation message rather than talking to a real payment/logistics provider.
 
@@ -54,8 +54,9 @@ script.js                    Cart, mobile nav, quick-add, shop filters, accordio
 assets/img/
   logo.png                   Brand logo (used in header/footer/mobile nav)
   favicon.png, favicon-32.png
-  santal-33-bottle.jpg       Real product photography (Santal 33)
-  ChatGPT Image *.png        Additional real product photography (Dior Sauvage)
+  dior-sauvage*.png, creed-aventus.png, dunhill-desire.png,
+  janan-gold.png, janan-sports.png, tuscan-leather.png,
+  red-tobacco.png, silk-musk.png    Real product photography
 ```
 
 ## Where to Customize
