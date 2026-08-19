@@ -75,7 +75,7 @@ button{cursor:pointer}
 .hero-copy h1 em{font-weight:400;color:var(--wine)}
 .hero-copy p{max-width:520px;color:#5d5750;font-size:16px;margin:0 0 30px}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-.hero-image{position:relative;min-height:600px;background:url('assets/img/santal-33-bottle.jpg') center/cover no-repeat}
+.hero-image{position:relative;min-height:600px;background:url('assets/img/dior-sauvage.png') center/cover no-repeat}
 .hero-image:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#eee7dd 0%,rgba(238,231,221,.3) 18%,transparent 45%)}
 .hero-stamp{position:absolute;right:26px;bottom:26px;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7);padding:15px 17px;border-radius:14px;z-index:2;max-width:210px}
 .hero-stamp strong{display:block;font-family:'DM Serif Display';font-size:20px;font-weight:400}.hero-stamp span{font-size:10px;color:var(--muted)}
@@ -104,7 +104,7 @@ button{cursor:pointer}
 
 /* Feature split */
 .feature-split{display:grid;grid-template-columns:1.05fr .95fr;border-radius:24px;overflow:hidden;background:var(--ink);color:#fff;min-height:540px}
-.feature-photo{background:url('https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAxL3Jhd3BpeGVsX29mZmljZV8yNV9zdGlsbF9saWZlX3Nob3Rfb2Zfc2ltcGxlX3BlcmZ1bWVfcGFja2FnaW5nX19jOTYzYzY5Zi00ZjMzLTQyM2UtYmJkNC0yOWEyYWJmMmMwYzlfMS5qcGc.jpg') center/cover no-repeat;min-height:520px}
+.feature-photo{background:url('assets/img/dior-sauvage.png') center/cover no-repeat;min-height:520px}
 .feature-copy{padding:68px;display:flex;flex-direction:column;justify-content:center}.feature-copy h2{font-family:'DM Serif Display';font-size:54px;line-height:1;margin:9px 0 20px;font-weight:400}.feature-copy p{color:#c8c3bb;max-width:510px}.note-list{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 30px}.note-chip{border:1px solid #4d4944;padding:8px 11px;border-radius:999px;font-size:11px;color:#ded9d2}
 
 /* Editorial cards */

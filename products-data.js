@@ -1,134 +1,100 @@
 const PRODUCTS = {
-  'after-hours': {
-    name: 'After Hours', price: 2490, badge: 'Best seller', meta: 'For Him', cat: 'men woody',
-    rating: 4.9, reviews: 268, sub: 'Citrus · Cedar · Amber',
-    img: 'https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlNF9waG90b19mb19hX21pbmltYWxfcGVyZnVtZV9ib3R0bGVfaXNvbGF0ZWRfb25fd19lNjU2NjExOS1iYjRiLTRhMmEtOGQyYi0xYTg3YjZmNjYzYTdfMS5qcGc.jpg',
-    top: 'Bergamot, Grapefruit', heart: 'Pink Pepper, Cedar', base: 'Amber, Musk, Vetiver',
-    lead: 'A smooth woody-amber fragrance made for evenings, dinners and days when you want a little more presence. Fresh at first, warm on the skin later.',
-    longevity: 86, projection: 74, sweetness: 46, freshness: 63,
-    smells: 'It opens bright and citrusy, turns dry and woody through the middle, and settles into a warm amber-musk trail. Refined rather than loud.',
-    wear: 'Best for evenings, dinners, office-to-evening wear, autumn and winter. Also works in air-conditioned summer settings.'
-  },
-  'soft-spoken': {
-    name: 'Soft Spoken', price: 2290, badge: '10% off', meta: 'For Her', cat: 'women floral',
-    rating: 4.8, reviews: 194, sub: 'Pear · Jasmine · Vanilla',
-    img: 'https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI1LTExL3NyLWltYWdlLTA1MTEyMDI1LXJlMTgtcy0xNzE2XzEuanBn.jpg',
-    top: 'Pear, Bergamot', heart: 'Jasmine, Peony', base: 'Vanilla, White Musk',
-    lead: 'A gentle fruity-floral eau de parfum with a soft vanilla dry down — easy to wear from morning meetings to evening dinners.',
-    longevity: 70, projection: 58, sweetness: 72, freshness: 55,
-    smells: 'Opens with juicy pear and bergamot, blooms into jasmine and peony, and finishes on a soft vanilla-musk base. Comforting, never overpowering.',
-    wear: 'Great for daytime wear and office settings, spring and summer. Layer with a woody scent for evenings.'
-  },
-  'sandal-verse': {
-    name: 'Sandal Verse', price: 2790, badge: 'Unisex', meta: 'Unisex', cat: 'unisex woody',
-    rating: 4.7, reviews: 151, sub: 'Saffron · Sandalwood · Musk',
-    img: 'assets/img/santal-33-bottle.jpg',
-    top: 'Saffron, Cardamom', heart: 'Sandalwood, Rose', base: 'Musk, Amber',
-    lead: 'A creamy, spiced sandalwood composition — warm and grounding, equally at home on him or her.',
-    longevity: 82, projection: 66, sweetness: 38, freshness: 44,
-    smells: 'Spiced saffron and cardamom open into a rich, creamy sandalwood heart, settling into a soft musk-amber base that lingers on skin.',
-    wear: 'Versatile year-round wear; especially good for cooler evenings and formal occasions.'
-  },
-  'oud-no-07': {
-    name: 'Oud No. 07', price: 3490, badge: 'Premium oud', meta: 'Unisex', cat: 'unisex oud',
-    rating: 4.9, reviews: 212, sub: 'Rose · Oud · Amber',
-    img: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400/f0ac6f123657833.60f2d559e8964.jpg',
-    top: 'Rose, Saffron', heart: 'Oud, Patchouli', base: 'Amber, Musk',
-    lead: 'A deep, resinous oud built around Turkish rose — rich, long-lasting and unmistakably premium.',
-    longevity: 92, projection: 80, sweetness: 34, freshness: 28,
-    smells: 'Rose and saffron open bright before giving way to a smoky, resinous oud heart and a warm amber-musk finish that can last a full day.',
-    wear: 'Best suited to fall/winter, evening events, and anyone who wants a scent that fills the room.'
-  },
-  'first-light': {
-    name: 'First Light', price: 2190, badge: 'New', meta: 'For Her', cat: 'women floral',
-    rating: 4.8, reviews: 88, sub: 'Mandarin · Peony · Musk',
-    img: 'https://parfumsuite.ch/cdn/shop/articles/nischenduefte_c59643fb-7b12-4396-9039-5af1d893b2b0.png?v=1770029534&width=1200',
-    top: 'Mandarin, Bergamot', heart: 'Peony, Freesia', base: 'White Musk, Cedar',
-    lead: 'A bright, citrus-floral opener for mornings that need a little optimism — light, clean and easy to wear daily.',
-    longevity: 60, projection: 50, sweetness: 48, freshness: 78,
-    smells: 'Zesty mandarin and bergamot lead into a soft peony-freesia heart, finishing on a clean white musk that never feels heavy.',
-    wear: 'Perfect for daytime, warmer months, and everyday office wear.'
-  },
-  'night-drive': {
-    name: 'Night Drive', price: 2590, badge: 'Popular', meta: 'For Him', cat: 'men woody',
-    rating: 4.9, reviews: 176, sub: 'Grapefruit · Pepper · Vetiver',
-    img: 'https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlNF9waG90b19mb19hX21pbmltYWxfcGVyZnVtZV9ib3R0bGVfaXNvbGF0ZWRfb25fd19lNjU2NjExOS1iYjRiLTRhMmEtOGQyYi0xYTg3YjZmNjYzYTdfMS5qcGc.jpg',
-    top: 'Grapefruit, Pink Pepper', heart: 'Lavender, Geranium', base: 'Vetiver, Amber',
-    lead: 'A crisp, peppery vetiver built for after-dark energy — confident without trying too hard.',
-    longevity: 78, projection: 70, sweetness: 30, freshness: 68,
-    smells: 'Sharp grapefruit and pink pepper open into a herbal lavender-geranium heart, grounded by dry vetiver and warm amber.',
-    wear: 'Ideal for nights out, autumn evenings, and anyone who prefers fresh-woody over sweet.'
-  },
-  'rose-theory': {
-    name: 'Rose Theory', price: 2390, badge: 'Fresh', meta: 'For Her', cat: 'women floral',
-    rating: 4.7, reviews: 104, sub: 'Rose · Lychee · White Musk',
-    img: 'https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI1LTExL3NyLWltYWdlLTA1MTEyMDI1LXJlMTgtcy0xNzE2XzEuanBn.jpg',
-    top: 'Lychee, Bergamot', heart: 'Rose, Peony', base: 'White Musk, Cedar',
-    lead: 'A modern take on rose — juicy lychee up top keeps it from feeling old-fashioned, with a soft musky finish.',
-    longevity: 64, projection: 52, sweetness: 60, freshness: 62,
-    smells: 'Juicy lychee and bergamot open into a true rose-peony heart, settling into clean white musk and soft cedar.',
-    wear: 'Lovely for spring/summer, daytime wear, and rose lovers who want something less classic.'
-  },
-  'amber-room': {
-    name: 'Amber Room', price: 2990, badge: 'Rich Amber', meta: 'Unisex', cat: 'unisex oud woody',
-    rating: 4.8, reviews: 142, sub: 'Labdanum · Amber · Vanilla',
-    img: 'https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAxL3Jhd3BpeGVsX29mZmljZV8yNV9zdGlsbF9saWZlX3Nob3Rfb2Zfc2ltcGxlX3BlcmZ1bWVfcGFja2FnaW5nX19jOTYzYzY5Zi00ZjMzLTQyM2UtYmJkNC0yOWEyYWJmMmMwYzlfMS5qcGc.jpg',
-    top: 'Bergamot, Pink Pepper', heart: 'Labdanum, Amber', base: 'Vanilla, Musk, Woods',
-    lead: 'A cozy, resinous amber built for cold-weather wear — think fireplace and cashmere in a bottle.',
-    longevity: 88, projection: 72, sweetness: 66, freshness: 24,
-    smells: 'Opens with a brief citrus-pepper flash before settling into rich labdanum-amber and a warm vanilla-woods base.',
-    wear: 'Best for winter, evenings, and anyone who loves warm, sweet, resinous scents.'
-  },
   'tuscan-leather': {
-    name: 'Tuscan Leather', price: 3290, badge: 'Niche', meta: 'Unisex', cat: 'unisex woody',
-    rating: 4.7, reviews: 58, sub: 'Raspberry · Leather · Amber',
+    name: 'Tuscan Leather', price: 3290, badge: 'Niche', meta: 'Unisex', cat: 'unisex woody leather',
+    rating: 4.7, reviews: 58, sub: 'Raspberry · Suede · Leather',
     img: 'assets/img/tuscan-leather.png',
-    top: 'Raspberry, Saffron', heart: 'Leather, Suede', base: 'Amber, Thyme, Olibanum',
-    lead: 'A bold, full-bodied leather built around tart raspberry and rugged suede — distinctive, long-lasting, and unmistakably premium.',
+    top: 'Raspberry, Saffron, Black Suede', heart: 'Violet Leaf, Jasmine Sambac, Tobacco Flower', base: 'Olibanum, Ambroxan',
+    lead: 'A raw yet refined leather composition — jammy raspberry meets rugged black suede, wrapped in night-blooming jasmine.',
     longevity: 90, projection: 76, sweetness: 40, freshness: 30,
-    smells: 'Opens with a sharp raspberry-saffron burst, moves into rich leather and suede, and settles into warm amber and thyme.',
-    wear: 'Best for evenings, colder months, and anyone who wants a scent that makes a statement.'
+    smells: 'Opens with a bold, almost jammy raspberry burst over black suede, moves into night-blooming jasmine and violet leaf, and settles into warm olibanum and smooth ambroxan.',
+    wear: 'Best for evenings, colder months, and anyone who wants a distinctive scent that leaves a lasting impression.'
   },
   'red-tobacco': {
-    name: 'Red Tobacco', price: 2990, badge: 'New', meta: 'For Him', cat: 'men woody',
-    rating: 4.6, reviews: 47, sub: 'Tobacco · Cocoa · Vanilla',
+    name: 'Red Tobacco', price: 2990, badge: 'Niche', meta: 'Unisex', cat: 'unisex woody oud',
+    rating: 4.6, reviews: 47, sub: 'Saffron · Oud · Vanilla',
     img: 'assets/img/red-tobacco.png',
-    top: 'Tobacco Leaf, Spices', heart: 'Dried Fruits, Cocoa', base: 'Vanilla, Tonka Bean, Amber',
-    lead: 'A rich, dessert-like tobacco with dried fruit and cocoa at its heart — warm, inviting and built to last all night.',
-    longevity: 88, projection: 70, sweetness: 74, freshness: 26,
-    smells: 'Spiced tobacco leaf opens into sweet dried fruit and cocoa, finishing on a smooth vanilla-tonka base.',
-    wear: 'Perfect for cold evenings, celebrations, and anyone who loves warm gourmand fragrances.'
+    top: 'Saffron, Cinnamon, Incense, Nutmeg, White Peach, Green Apple, Nepalese Oud', heart: 'Patchouli, Jasmine', base: 'Amber, Vetiver, Vanilla Pods, White Musk',
+    lead: 'A rich, smoky-sweet composition — warm spice and agarwood over a plush vanilla-amber base.',
+    longevity: 90, projection: 74, sweetness: 60, freshness: 22,
+    smells: 'Opens with warm saffron, cinnamon and a hint of Nepalese oud, moves into a soft patchouli-jasmine heart, and finishes on plush vanilla, amber and white musk.',
+    wear: 'Perfect for cold evenings, celebrations, and anyone who loves a smoky, oud-forward gourmand.'
   },
   'janan-sports': {
-    name: 'Janan Sports', price: 2090, badge: 'New', meta: 'For Him', cat: 'men woody',
-    rating: 4.5, reviews: 39, sub: 'Bergamot · Marine · Musk',
+    name: 'Janan Sports', price: 2090, badge: 'Everyday Fresh', meta: 'For Him', cat: 'men fresh',
+    rating: 4.5, reviews: 39, sub: 'Bergamot · Pineapple · Marine',
     img: 'assets/img/janan-sports.png',
-    top: 'Bergamot, Mint', heart: 'Marine Notes, Lavender', base: 'Musk, Cedar, Ambroxan',
-    lead: 'A clean, energetic fresh scent built for the gym, the commute and everything in between — light, sporty and easy to wear daily.',
-    longevity: 62, projection: 55, sweetness: 30, freshness: 82,
-    smells: 'Crisp bergamot and mint open into an airy marine-lavender heart, grounded by clean musk and cedar.',
+    top: 'Bergamot, Lemon, Pineapple, Pink Pepper, Blackcurrant, Plum, Mandarin, Marine Accord', heart: 'Rose, Geranium, Jasmine, Lily of the Valley', base: 'Musk, Woods',
+    lead: 'A fresh, vibrant fragrance for the modern, active man — bright citrus and fruit over a clean floral-marine heart.',
+    longevity: 62, projection: 55, sweetness: 34, freshness: 84,
+    smells: 'Zesty citrus and juicy fruits open into a delicate floral bouquet, settling into a clean musky base that never feels heavy.',
     wear: 'Ideal for daytime, workouts, summer, and anyone who wants a low-effort everyday fresh scent.'
   },
   'dior-sauvage': {
-    name: 'Dior Sauvage', price: 2890, badge: 'Popular', meta: 'For Him', cat: 'men woody',
+    name: 'Dior Sauvage', price: 2890, badge: 'Popular', meta: 'For Him', cat: 'men fresh woody amber',
     rating: 4.8, reviews: 220, sub: 'Bergamot · Pepper · Ambroxan',
     img: 'assets/img/dior-sauvage.png',
-    top: 'Calabrian Bergamot, Pepper', heart: 'Sichuan Pepper, Lavender, Geranium', base: 'Ambroxan, Cedar, Vanilla',
-    lead: 'Our most requested impression — fresh peppery bergamot over a clean, radiant ambroxan-cedar base. Instantly recognizable, endlessly versatile.',
-    longevity: 80, projection: 78, sweetness: 36, freshness: 70,
-    smells: 'Bright bergamot and pepper open into a spicy lavender-geranium heart, drying down to a smooth, radiant ambroxan-cedar trail.',
+    top: 'Calabrian Bergamot', heart: 'Sichuan Pepper, Lavender, Star Anise', base: 'Vanilla, Ambroxan',
+    lead: 'Our most requested designer icon — fresh peppery bergamot over a radiant, smoky ambroxan-vanilla base. Instantly recognizable, endlessly versatile.',
+    longevity: 85, projection: 78, sweetness: 40, freshness: 70,
+    smells: 'Bright Calabrian bergamot opens into a spicy pepper-lavender heart with a touch of star anise, drying down to a warm vanilla-ambroxan trail with real staying power.',
     wear: 'Works year-round for almost any occasion — office, dates, everyday wear.'
+  },
+  'janan-gold': {
+    name: 'Janan Gold', price: 2390, badge: 'Oriental', meta: 'For Him', cat: 'men oriental amber',
+    rating: 4.6, reviews: 33, sub: 'Spice · Amber · Musk',
+    img: 'assets/img/janan-gold.png',
+    top: 'Sweet Spices', heart: 'Amber, Florals', base: 'Musk, Woods',
+    lead: 'A luxurious, oriental fragrance from the celebrated Janan line — rich, long-lasting and made for gifting.',
+    longevity: 84, projection: 68, sweetness: 58, freshness: 34,
+    smells: 'Opens with warm sweet spice, blooms into a floral-amber heart, and settles into a smooth, long-lasting musk base.',
+    wear: 'Best for evenings, formal occasions and gifting — a rich scent that lingers for hours.'
+  },
+  'dunhill-desire': {
+    name: 'Dunhill Desire', price: 3190, badge: 'Classic', meta: 'For Him', cat: 'men woody amber',
+    rating: 4.5, reviews: 28, sub: 'Bergamot · Rose · Teak Wood',
+    img: 'assets/img/dunhill-desire.png',
+    top: 'Bergamot, Lime, Neroli, Apple', heart: 'Patchouli, Rose, Teak Wood', base: 'Vanilla, Musk, Labdanum',
+    lead: 'A distinctive, sensual amber-woody classic — sharp citrus up top with a warm, seductive dry down.',
+    longevity: 76, projection: 64, sweetness: 44, freshness: 52,
+    smells: 'Crisp bergamot, lime and apple open into a woody rose-patchouli heart, finishing on warm vanilla, musk and labdanum.',
+    wear: 'Versatile year-round wear; equally suited to the office and evening occasions.'
+  },
+  'creed-aventus': {
+    name: 'Creed Aventus', price: 3590, badge: 'Niche', meta: 'For Him', cat: 'men fresh fruity woody',
+    rating: 4.9, reviews: 65, sub: 'Pineapple · Birch · Ambergris',
+    img: 'assets/img/creed-aventus.png',
+    top: 'Apple, Blackcurrant, Pineapple, Bergamot', heart: 'Jasmine, Birch, Juniper Berries', base: 'Oakmoss, Vanilla, Ambergris',
+    lead: "Our take on the world's most iconic niche fragrance — smoky pineapple and blackcurrant over a sophisticated woody-ambergris base.",
+    longevity: 88, projection: 82, sweetness: 32, freshness: 60,
+    smells: 'A tantalising citrus-fruit opening leads into a fresh, smoky birch heart, settling into oakmoss, vanilla and ambergris for a confident, versatile finish.',
+    wear: 'Suited to almost any occasion — a sophisticated everyday signature with serious longevity and projection.'
+  },
+  'silk-musk': {
+    name: 'Silk Musk', price: 1990, badge: 'Everyday Musk', meta: 'Unisex', cat: 'unisex musk floral',
+    rating: 4.4, reviews: 21, sub: 'Rose · Sandalwood · Musk',
+    img: 'assets/img/silk-musk.png',
+    top: 'Silk Accord, Bergamot', heart: 'Rose, Violet', base: 'Sandalwood, White Musk',
+    lead: 'A soft, comforting musk built around silky rose and creamy sandalwood — easy to wear daily, on anyone.',
+    longevity: 68, projection: 48, sweetness: 50, freshness: 50,
+    smells: 'Opens light and silky, blooms into a gentle rose-violet heart, and settles into a warm, powdery sandalwood-musk base that sits close to the skin.',
+    wear: 'Great for daily wear, layering, and anyone who prefers soft, clean musks over heavy scents.'
   }
 };
 
 const TESTER_SIZES = {
-  'after-hours': { 5: 350, 10: 550 },
-  'soft-spoken': { 5: 350, 10: 550 },
-  'sandal-verse': { 5: 380, 10: 590 },
-  'oud-no-07': { 5: 420, 10: 650 }
+  'tuscan-leather': { 5: 450, 10: 700 },
+  'red-tobacco': { 5: 400, 10: 630 },
+  'janan-sports': { 5: 300, 10: 470 },
+  'dior-sauvage': { 5: 400, 10: 620 },
+  'janan-gold': { 5: 330, 10: 520 },
+  'dunhill-desire': { 5: 440, 10: 690 },
+  'creed-aventus': { 5: 490, 10: 770 },
+  'silk-musk': { 5: 280, 10: 440 }
 };
 
 const BOXES = {
-  'tester-box-5ml': { name: 'Discovery Tester Box — 5ml (Set of 4)', price: 1200, size: '5ml', includes: ['after-hours', 'soft-spoken', 'sandal-verse', 'oud-no-07'] },
-  'tester-box-10ml': { name: 'Discovery Tester Box — 10ml (Set of 4)', price: 1900, size: '10ml', includes: ['after-hours', 'soft-spoken', 'sandal-verse', 'oud-no-07'] }
+  'tester-box-5ml': { name: 'Signature Discovery Box — 5ml (Set of 4)', price: 1400, size: '5ml', includes: ['dior-sauvage', 'dunhill-desire', 'creed-aventus', 'janan-sports'] },
+  'tester-box-10ml': { name: 'Signature Discovery Box — 10ml (Set of 4)', price: 2200, size: '10ml', includes: ['dior-sauvage', 'dunhill-desire', 'creed-aventus', 'janan-sports'] },
+  'niche-box-5ml': { name: 'Niche & Oriental Box — 5ml (Set of 4)', price: 1250, size: '5ml', includes: ['tuscan-leather', 'red-tobacco', 'janan-gold', 'silk-musk'] },
+  'niche-box-10ml': { name: 'Niche & Oriental Box — 10ml (Set of 4)', price: 1990, size: '10ml', includes: ['tuscan-leather', 'red-tobacco', 'janan-gold', 'silk-musk'] }
 };

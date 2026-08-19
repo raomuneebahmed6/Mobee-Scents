@@ -55,7 +55,7 @@ $('.menu-btn')?.addEventListener('click',()=>{$('.mobile-nav')?.classList.add('o
 
 function toast(msg){const t=$('.toast');if(!t)return;t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1700)}
 $$('.add-to-cart').forEach(btn=>btn.addEventListener('click',e=>{
-  e.preventDefault();const el=btn.closest('[data-product]')||btn;const qty=+($('#qtyValue')?.textContent||1);const item={name:el.dataset.name||btn.dataset.name||'Mobee Scents Eau de Parfum',price:+(el.dataset.price||btn.dataset.price||2490),img:el.dataset.img||btn.dataset.img||'assets/img/santal-33-bottle.jpg',size:el.dataset.size||btn.dataset.size||$('.size-btn.active')?.textContent||'50ml',qty};
+  e.preventDefault();const el=btn.closest('[data-product]')||btn;const qty=+($('#qtyValue')?.textContent||1);const item={name:el.dataset.name||btn.dataset.name||'Mobee Scents Eau de Parfum',price:+(el.dataset.price||btn.dataset.price||2490),img:el.dataset.img||btn.dataset.img||'assets/img/dior-sauvage.png',size:el.dataset.size||btn.dataset.size||$('.size-btn.active')?.textContent||'50ml',qty};
   const found=cart.find(x=>x.name===item.name&&x.size===item.size);found?found.qty+=qty:cart.push(item);save();toast('Added to your bag');openCart();
 }));
 
@@ -99,7 +99,7 @@ function renderProductPage(){
   const titleEl=$('#pTitle');
   if(!titleEl||typeof PRODUCTS==='undefined') return;
   const params=new URLSearchParams(location.search);
-  let slug=params.get('slug')||'after-hours';
+  let slug=params.get('slug')||'dior-sauvage';
   const testerMatch=slug.match(/^(.+)-(5|10)ml$/);
   let mode,data,base,size,price,name;
 
@@ -110,7 +110,7 @@ function renderProductPage(){
   }else if(PRODUCTS[slug]){
     mode='full';base=slug;data=PRODUCTS[slug];name=data.name;price=data.price;size='50ml';
   }else{
-    mode='full';base='after-hours';slug='after-hours';data=PRODUCTS['after-hours'];name=data.name;price=data.price;size='50ml';
+    mode='full';base='dior-sauvage';slug='dior-sauvage';data=PRODUCTS['dior-sauvage'];name=data.name;price=data.price;size='50ml';
   }
 
   document.title=name+' — Mobee Scents';
@@ -122,7 +122,7 @@ function renderProductPage(){
   $('#pPrice').textContent=format(price);
   const mainImg=mode==='box'?PRODUCTS[data.includes[0]].img:data.img;
   $('#pImg').src=mainImg;$('#pImg').alt=name;
-  const thumbImgs=mode==='box'?data.includes.slice(0,3).map(s=>PRODUCTS[s].img):[data.img,'assets/img/santal-33-bottle.jpg',data.img];
+  const thumbImgs=mode==='box'?data.includes.slice(0,3).map(s=>PRODUCTS[s].img):[data.img,'assets/img/dior-sauvage-2.png','assets/img/dior-sauvage-3.png'];
   $$('#pThumbs img').forEach((t,i)=>t.src=thumbImgs[i]||mainImg);
 
   if(mode==='box'){
@@ -176,14 +176,16 @@ function renderProductPage(){
   let related=[];
   if(mode==='box'){
     $('#pRelatedTitle').textContent='More to explore';
-    const otherBox=slug==='tester-box-5ml'?'tester-box-10ml':'tester-box-5ml';
-    related.push({slug:otherBox,name:BOXES[otherBox].name,price:BOXES[otherBox].price,img:PRODUCTS[BOXES[otherBox].includes[0]].img,sub:'4 fragrances, one box'});
+    const boxPrefix=slug.replace(/-(5|10)ml$/,'');
+    const otherBox=boxPrefix+'-'+(slug.endsWith('5ml')?'10ml':'5ml');
+    if(BOXES[otherBox])related.push({slug:otherBox,name:BOXES[otherBox].name,price:BOXES[otherBox].price,img:PRODUCTS[BOXES[otherBox].includes[0]].img,sub:'4 fragrances, one box'});
     data.includes.slice(0,2).forEach(k=>related.push({slug:k,name:PRODUCTS[k].name,price:PRODUCTS[k].price,img:PRODUCTS[k].img,sub:PRODUCTS[k].sub}));
   }else if(mode==='tester'){
     $('#pRelatedTitle').textContent='Other testers & boxes';
     const otherN=size==='5ml'?10:5;
     related.push({slug:base+'-'+otherN+'ml',name:data.name+' — '+otherN+'ml Tester',price:TESTER_SIZES[base][otherN],img:data.img,sub:data.sub});
-    related.push({slug:'tester-box-5ml',name:BOXES['tester-box-5ml'].name,price:BOXES['tester-box-5ml'].price,img:PRODUCTS[BOXES['tester-box-5ml'].includes[0]].img,sub:'4 fragrances, one box'});
+    const ownBox=Object.keys(BOXES).find(b=>BOXES[b].includes.includes(base)&&BOXES[b].size==='5ml')||'tester-box-5ml';
+    related.push({slug:ownBox,name:BOXES[ownBox].name,price:BOXES[ownBox].price,img:PRODUCTS[BOXES[ownBox].includes[0]].img,sub:'4 fragrances, one box'});
   }else{
     $('#pRelatedTitle').textContent='Similar profiles';
     Object.keys(PRODUCTS).filter(k=>k!==base).slice(0,2).forEach(k=>related.push({slug:k,name:PRODUCTS[k].name,price:PRODUCTS[k].price,img:PRODUCTS[k].img,sub:PRODUCTS[k].sub}));
