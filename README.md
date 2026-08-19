@@ -2,22 +2,22 @@
 
 Premium, fully responsive fragrance e-commerce website for **Mobee Scents** — built with plain **HTML, CSS, and JavaScript**. No framework, no build step, no npm install required.
 
-The component/motion system (top announcement bar, floating pill header with dropdown nav, hero with parallax blobs + stat banner card, marquee ticker, service cards, dark scrollytelling "journey" section, wave footer, WhatsApp float, etc.) is modeled on lmshandling.com. The palette (deep plum + gold on warm ivory) and the "MS" monogram are taken from the brand's own promotional artwork.
+The layout (top announcement + service bars, sticky header with dropdown nav, split hero, category pills, product grid with quick-add, dark feature spotlight, editorial collection cards, trust strip, quote band, newsletter, and a slide-in cart drawer) is a restrained, ecommerce-first storefront design. The colour palette — deep navy ink, rose wine, and muted gold on warm ivory — is taken directly from the Mobee Scents logo artwork.
 
 ## Tech Stack
 
-- Static multi-page HTML site (one `.html` file per route)
-- Vanilla CSS (`assets/css/style.css`) — custom properties for the ivory/charcoal/gold theme
-- Vanilla JavaScript (no libraries, no dependencies) — header/top-bar/footer/menus/modals are rendered into placeholder `<div>`s by `assets/js/layout.js` so markup isn't duplicated across pages
-- Google Fonts (Cormorant Garamond + Jost) loaded via `<link>` tag
-- Cart & wishlist persisted client-side via `localStorage`
-- Product imagery is hand-coded SVG bottle art (`assets/js/icons.js` → `bottleSVG()`) so the site works with zero external image assets
+- Static multi-page HTML site (one `.html` file per route, markup duplicated per page — no build step needed)
+- Vanilla CSS (`styles.css`) — theme colours live as custom properties in the `:root` block at the top
+- Vanilla JavaScript (`script.js`, no libraries/dependencies) — cart drawer, mobile nav, quick-add, shop filters, accordions, scroll reveal, and form toasts
+- Google Fonts (DM Serif Display + Manrope) loaded via `<link>` tag
+- Cart persisted client-side via `localStorage`
+- Product photography: real Mobee Scents bottle shots (`assets/img/santal-33-bottle.jpg` etc.) plus a few placeholder stock images for products that don't have photography yet — swap these out in each page's `data-img`/`src` attributes as real shots become available
 
-No backend/database — this is a front-end storefront. "Checkout" shows a confirmation message rather than charging a real payment provider.
+No backend/database — this is a front-end storefront. "Checkout" and "Track Order" show a confirmation message rather than talking to a real payment/logistics provider.
 
 ## Running locally
 
-Because the site uses `fetch`-free, dependency-free JavaScript, you can just open `index.html` directly in a browser. For the smoothest local experience (and to match how it'll behave once deployed), serve it with any static file server, e.g.:
+Because the site uses dependency-free JavaScript, you can just open `index.html` directly in a browser. For the smoothest local experience, serve it with any static file server, e.g.:
 
 ```bash
 npx serve .
@@ -40,48 +40,35 @@ This also works unmodified on GitHub Pages, Netlify, or any static host.
 
 ```
 index.html                   Home page
-shop.html                    Shop with search/filter/sort (assets/js/shop.js)
+shop.html                    Shop with search/filter/sort
+product.html                 Sample product detail page
 collections.html             Editorial collections page
 about.html, contact.html     Brand story & contact form
-wishlist.html                Saved items page
+track.html                   Order tracking form (demo)
 privacy-policy.html, terms-and-conditions.html,
 shipping-policy.html, return-policy.html
 
-assets/
-  css/style.css              All styling — theme tokens live in :root at the top
-  js/
-    data.js                  Product/testimonial/note/benefit data + SITE_CONFIG (contact info)
-    icons.js                 Inline SVG icon set, logo mark, and bottleSVG() product art generator
-    storage.js                Cart + wishlist state (localStorage), pub/sub via Store.onChange()
-    reveal.js                 Generic scroll-reveal (IntersectionObserver adds .in)
-    layout.js                 Renders loader, scroll progress, top bar, header + dropdown nav,
-                               mobile nav, account dropdown, search overlay, cart drawer, footer,
-                               WhatsApp float / back-to-top, and all their scroll/click interactions
-    product-card.js           renderProductGrid() — used by home/shop/wishlist
-    quickview.js              Quick View modal (shared)
-    home.js, shop.js, collections.js, contact.js, wishlist.js   Page-specific logic
-  img/logo.png, favicon.png, favicon-32.png   Brand logo + favicons
-  img/santal-33-bottle.jpg                    Product photography
+styles.css                   All styling — theme tokens live in :root at the top
+script.js                    Cart, mobile nav, quick-add, shop filters, accordions, reveal animation, form toasts
+
+assets/img/
+  logo.png                   Brand logo (used in header/footer/mobile nav)
+  favicon.png, favicon-32.png
+  santal-33-bottle.jpg       Real product photography (Santal 33)
+  ChatGPT Image *.png        Additional real product photography (Dior Sauvage)
 ```
 
 ## Where to Customize
 
 | What | File |
 |---|---|
-| **Product images** | Products render generated SVG bottle art. To use real photography, add images to `assets/img/products/` and replace the `bottleSVG(...)` calls in `product-card.js`, `quickview.js`, `layout.js` (cart drawer), and `layout.js`/search overlay with `<img>` tags. |
-| **Products, prices, sizes, fragrance notes** | `assets/js/data.js` → `PRODUCTS` |
-| **Currency / price formatting** | `assets/js/data.js` → `formatPrice()` (defaults to PKR) |
-| **Testimonials** | `assets/js/data.js` → `TESTIMONIALS` |
-| **Fragrance note categories** | `assets/js/data.js` → `FRAGRANCE_NOTES` |
-| **"Why Choose Us" benefits** | `assets/js/data.js` → `BENEFITS` |
-| **Contact info (email, phone, WhatsApp, address, hours)** | `assets/js/data.js` → `SITE_CONFIG` |
-| **Social links** | `assets/js/data.js` → `SITE_CONFIG.social` |
+| **Colours & fonts (brand theme)** | `styles.css` → `:root` block at the top |
+| **Products, prices, notes, images** | Product card markup repeated inside `index.html`, `shop.html`, `product.html` (each `<article class="product-card">`) |
+| **Contact info (WhatsApp, email, hours, address)** | `contact.html` → `.contact-list`, and the footer `.brand` block on every page |
 | **Site metadata / SEO / domain** | `<title>`/`<meta>` tags at the top of each `.html` file, plus `sitemap.xml` and `robots.txt` |
-| **Colors & fonts (brand theme)** | `assets/css/style.css` → `:root` block at the top, and the Google Fonts `<link>` in each page's `<head>` |
 | **Policy page copy** | `privacy-policy.html`, `terms-and-conditions.html`, `shipping-policy.html`, `return-policy.html` |
 
 ## Notes
 
-- Product photography placeholders: rather than hot-linking third-party stock photos (unreliable licensing, broken links), each product renders bespoke SVG bottle art tinted per-product. Swap these for real photos any time — see the table above.
-- Cart/wishlist persist across refreshes via `localStorage`; they're per-browser, not synced to an account (there's no backend).
-- The "Sign In / Create Account" panel in the header is presentational only (no auth backend wired up).
+- Cart persists across refreshes via `localStorage` (key `mobeeScentsCart`); it's per-browser, not synced to an account (there's no backend).
+- Because each page is a standalone HTML file, header/footer/nav markup is repeated per page rather than injected by JavaScript — update shared bits (logo, nav links, footer) across all pages when changing them.

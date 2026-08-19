@@ -1,76 +1,9 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shop All Fragrances | Mobee Scents</title>
-  <meta name="description" content="Browse the full Mobee Scents collection — filter by men's, women's, or unisex, by fragrance family, search by note, and sort by price or rating." />
-  <meta name="theme-color" content="#6B1F3A" />
-  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png" />
-<link rel="apple-touch-icon" href="assets/img/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-</head>
-<body data-page="shop">
-  <a class="skip-link" href="#main-content">Skip to content</a>
-
-  <div id="site-header"></div>
-  <div id="search-overlay-root"></div>
-  <div id="cart-drawer-root"></div>
-  <div id="quickview-root"></div>
-
-  <main id="main-content">
-    <div class="page-head">
-      <p class="section-label">The Full Collection</p>
-      <h1>Shop All Fragrances</h1>
-      <p>Search, filter, and sort our collection to find the composition that fits you.</p>
-    </div>
-
-    <div class="section" style="padding-top:1rem;">
-      <div class="shop-toolbar">
-        <div class="shop-search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>
-          <input type="text" id="shopSearchInput" placeholder="Search fragrances…" />
-        </div>
-        <div class="shop-toolbar-right">
-          <button class="filters-toggle" id="filtersToggleBtn">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-            Filters
-          </button>
-          <label class="sort-label">Sort by
-            <select id="shopSortSelect">
-              <option value="featured">Featured</option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-              <option value="rating">Top Rated</option>
-            </select>
-          </label>
-        </div>
-      </div>
-
-      <div class="filter-row always-visible" id="shopGenderRow"></div>
-      <div class="filter-row" id="shopFilterRow"></div>
-
-      <div class="product-grid shop-grid" id="shopGrid"></div>
-      <div class="shop-empty" id="shopEmpty" hidden>
-        <h3>No fragrances match your search</h3>
-        <p>Try a different search term or clear your filters.</p>
-        <button id="shopClearFilters">Clear filters</button>
-      </div>
-    </div>
-  </main>
-
-  <div id="site-footer"></div>
-
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/icons.js"></script>
-  <script src="assets/js/storage.js"></script>
-  <script src="assets/js/reveal.js"></script>
-  <script src="assets/js/layout.js"></script>
-  <script src="assets/js/product-card.js"></script>
-  <script src="assets/js/quickview.js"></script>
-  <script src="assets/js/shop.js"></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shop — Mobee Scents</title><meta name="description" content="Browse the full Mobee Scents fragrance range — for him, for her, unisex, woody, floral and oud."><meta name="theme-color" content="#7a2b4a"><link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="assets/img/favicon.png"><link rel="stylesheet" href="styles.css"></head><body>
+<div class="topbar"><div class="container"><span><b>FREE DELIVERY</b> on orders above Rs. 3,500</span><span>15 Days Easy Returns</span><span>Free Tester With Every Full-Size Perfume</span></div></div>
+<header class="header"><div class="container nav"><nav class="nav-left"><a class="nav-link" href="index.html">Home</a><a class="nav-link active" href="shop.html">Shop</a><a class="nav-link" href="collections.html">Collections</a><a class="nav-link" href="about.html">Our Story</a></nav><a class="logo" href="index.html"><img src="assets/img/logo.png" alt="Mobee Scents" class="logo-mark"><span>MOBEE SCENTS<small>FINE FRAGRANCES</small></span></a><div class="nav-right"><button class="icon-btn">⌕</button><a class="nav-link" href="track.html">Track Order</a><button class="icon-btn cart-open">🛍<span class="cart-count">0</span></button><button class="icon-btn menu-btn">☰</button></div></div></header>
+<main><section class="page-hero"><div class="container reveal"><span class="eyebrow">All fragrances</span><h1>Find your next signature.</h1><p>Filter by mood, profile or who it is for. Every product includes clear notes, wearability and performance guidance.</p></div></section>
+<section class="section"><div class="container"><div class="shop-toolbar"><div class="filter-tabs"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="men">For Him</button><button class="filter-btn" data-filter="women">For Her</button><button class="filter-btn" data-filter="unisex">Unisex</button><button class="filter-btn" data-filter="woody">Woody</button><button class="filter-btn" data-filter="floral">Floral</button><button class="filter-btn" data-filter="oud">Oud</button></div><select class="sort"><option>Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Newest</option></select></div>
+<div class="products-grid">
+<article class="product-card reveal" data-product data-name="After Hours" data-price="2490" data-cat="men woody" data-img="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlNF9waG90b19mb19hX21pbmltYWxfcGVyZnVtZV9ib3R0bGVfaXNvbGF0ZWRfb25fd19lNjU2NjExOS1iYjRiLTRhMmEtOGQyYi0xYTg3YjZmNjYzYTdfMS5qcGc.jpg"><div class="product-media"><span class="badge">Best Seller</span><button class="wish">♡</button><a href="product.html"><img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlNF9waG90b19mb19hX21pbmltYWxfcGVyZnVtZV9ib3R0bGVfaXNvbGF0ZWRfb25fd19lNjU2NjExOS1iYjRiLTRhMmEtOGQyYi0xYTg3YjZmNjYzYTdfMS5qcGc.jpg" alt="After Hours perfume"></a><button class="quick-add">Quick add</button></div><div class="product-info"><div class="product-meta"><span>Men</span><span class="stars">★★★★★ <i class="rating">4.7</i></span></div><h3 class="product-title"><a href="product.html">After Hours</a></h3><div class="product-sub">Citrus · Cedar · Amber</div><div class="price">Rs. 2,490</div></div></article><article class="product-card reveal" data-product data-name="Soft Spoken" data-price="2290" data-cat="women floral" data-img="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI1LTExL3NyLWltYWdlLTA1MTEyMDI1LXJlMTgtcy0xNzE2XzEuanBn.jpg"><div class="product-media"><span class="badge sale">10% Off</span><button class="wish">♡</button><a href="#"><img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI1LTExL3NyLWltYWdlLTA1MTEyMDI1LXJlMTgtcy0xNzE2XzEuanBn.jpg" alt="Soft Spoken perfume"></a><button class="quick-add">Quick add</button></div><div class="product-info"><div class="product-meta"><span>Women</span><span class="stars">★★★★★ <i class="rating">4.8</i></span></div><h3 class="product-title"><a href="#">Soft Spoken</a></h3><div class="product-sub">Pear · Jasmine · Vanilla</div><div class="price">Rs. 2,290</div></div></article><article class="product-card reveal" data-product data-name="Sandal Verse" data-price="2790" data-cat="unisex woody" data-img="assets/img/santal-33-bottle.jpg"><div class="product-media"><span class="badge">Unisex</span><button class="wish">♡</button><a href="#"><img src="assets/img/santal-33-bottle.jpg" alt="Sandal Verse perfume"></a><button class="quick-add">Quick add</button></div><div class="product-info"><div class="product-meta"><span>Unisex</span><span class="stars">★★★★★ <i class="rating">4.9</i></span></div><h3 class="product-title"><a href="#">Sandal Verse</a></h3><div class="product-sub">Saffron · Sandalwood · Musk</div><div class="price">Rs. 2,790</div></div></article><article class="product-card reveal" data-product data-name="Oud No. 07" data-price="3490" data-cat="unisex oud" data-img="https://mir-s3-cdn-cf.behance.net/project_modules/1400/f0ac6f123657833.60f2d559e8964.jpg"><div class="product-media"><span class="badge">Premium Oud</span><button class="wish">♡</button><a href="#"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/f0ac6f123657833.60f2d559e8964.jpg" alt="Oud No. 07 perfume"></a><button class="quick-add">Quick add</button></div><div class="product-info"><div class="product-meta"><span>Unisex</span><span class="stars">★★★★★ <i class="rating">4.7</i></span></div><h3 class="product-title"><a href="#">Oud No. 07</a></h3><div class="product-sub">Rose · Oud · Amber</div><div class="price">Rs. 3,490</div></div></article><article class="product-card reveal" data-product data-name="First Light" data-price="2190" data-cat="women floral" data-img="https://parfumsuite.ch/cdn/shop/articles/nischenduefte_c59643fb-7b12-4396-9039-5af1d893b2b0.png?v=1770029534&width=1200"><div class="product-media"><span class="badge">New</span><button class="wish">♡</button><a href="#"><img src="https://parfumsuite.ch/cdn/shop/articles/nischenduefte_c59643fb-7b12-4396-9039-5af1d893b2b0.png?v=1770029534&width=1200" alt="First Light perfume"></a><button class="quick-add">Quick add</button></div><div class="product-info"><div class="product-meta"><span>Women</span><span class="stars">★★★★★ <i class="rating">4.8</i></span></div><h3 class="product-title"><a href="#">First Light</a></h3><div class="product-sub">Mandarin · Peony · Musk</div><div class="price">Rs. 2,190</div></div></article><article class="product-card reveal" data-product data-name="Night Drive" data-price="2590" data-cat="men woody" data-img="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlNF9waG90b19mb19hX21pbmltYWxfcGVyZnVtZV9ib3R0bGVfaXNvbGF0ZWRfb25fd19lNjU2NjExOS1iYjRiLTRhMmEtOGQyYi0xYTg3YjZmNjYzYTdfMS5qcGc.jpg"><div class="product-media"><span class="badge">Popular</span><button class="wish">♡</button><a href="#"><img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlNF9waG90b19mb19hX21pbmltYWxfcGVyZnVtZV9ib3R0bGVfaXNvbGF0ZWRfb25fd19lNjU2NjExOS1iYjRiLTRhMmEtOGQyYi0xYTg3YjZmNjYzYTdfMS5qcGc.jpg" alt="Night Drive perfume"></a><button class="quick-add">Quick add</button></div><div class="product-info"><div class="product-meta"><span>Men</span><span class="stars">★★★★★ <i class="rating">4.9</i></span></div><h3 class="product-title"><a href="#">Night Drive</a></h3><div class="product-sub">Grapefruit · Pepper · Vetiver</div><div class="price">Rs. 2,590</div></div></article><article class="product-card reveal" data-product data-name="Rose Theory" data-price="2390" data-cat="women floral" data-img="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI1LTExL3NyLWltYWdlLTA1MTEyMDI1LXJlMTgtcy0xNzE2XzEuanBn.jpg"><div class="product-media"><span class="badge">Fresh</span><button class="wish">♡</button><a href="#"><img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI1LTExL3NyLWltYWdlLTA1MTEyMDI1LXJlMTgtcy0xNzE2XzEuanBn.jpg" alt="Rose Theory perfume"></a><button class="quick-add">Quick add</button></div><div class="product-info"><div class="product-meta"><span>Women</span><span class="stars">★★★★★ <i class="rating">4.7</i></span></div><h3 class="product-title"><a href="#">Rose Theory</a></h3><div class="product-sub">Rose · Lychee · White Musk</div><div class="price">Rs. 2,390</div></div></article><article class="product-card reveal" data-product data-name="Amber Room" data-price="2990" data-cat="unisex oud woody" data-img="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAxL3Jhd3BpeGVsX29mZmljZV8yNV9zdGlsbF9saWZlX3Nob3Rfb2Zfc2ltcGxlX3BlcmZ1bWVfcGFja2FnaW5nX19jOTYzYzY5Zi00ZjMzLTQyM2UtYmJkNC0yOWEyYWJmMmMwYzlfMS5qcGc.jpg"><div class="product-media"><span class="badge">Rich Amber</span><button class="wish">♡</button><a href="#"><img src="https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAxL3Jhd3BpeGVsX29mZmljZV8yNV9zdGlsbF9saWZlX3Nob3Rfb2Zfc2ltcGxlX3BlcmZ1bWVfcGFja2FnaW5nX19jOTYzYzY5Zi00ZjMzLTQyM2UtYmJkNC0yOWEyYWJmMmMwYzlfMS5qcGc.jpg" alt="Amber Room perfume"></a><button class="quick-add">Quick add</button></div><div class="product-info"><div class="product-meta"><span>Unisex</span><span class="stars">★★★★★ <i class="rating">4.8</i></span></div><h3 class="product-title"><a href="#">Amber Room</a></h3><div class="product-sub">Labdanum · Amber · Vanilla</div><div class="price">Rs. 2,990</div></div></article></div></div></section></main>
+<footer class="footer"><div class="container"><div class="footer-grid"><div class="brand"><a class="logo" href="index.html" style="color:#fff"><img src="assets/img/logo.png" alt="Mobee Scents" class="logo-mark"><span>MOBEE SCENTS<small style="color:#8f8b83;text-align:left">FINE FRAGRANCES</small></span></a><p>Premium, long-lasting fragrances for everyday confidence.</p></div><div><h4>Shop</h4><a href="shop.html">All Perfumes</a><a href="collections.html">Gift Sets</a><a href="collections.html">Oud Collection</a></div><div><h4>Help</h4><a href="track.html">Track Order</a><a href="contact.html">Contact Us</a><a href="#">FAQs</a></div><div><h4>Company</h4><a href="about.html">Our Story</a><a href="privacy-policy.html">Privacy Policy</a><a href="return-policy.html">Return Policy</a></div></div><div class="footer-bottom"><span>© 2026 Mobee Scents.</span><span>Nationwide delivery across Pakistan</span></div></div></footer>
+<div class="overlay"></div><aside class="cart-drawer"><div class="cart-head"><h3>Your Bag</h3><button class="icon-btn cart-close">×</button></div><div class="cart-body"></div><div class="cart-foot"><div class="cart-total"><span>Subtotal</span><strong>Rs. 0</strong></div><button class="btn wine" style="width:100%">Proceed to Checkout</button></div></aside><aside class="mobile-nav"><div class="mobile-nav-head"><span class="logo"><img src="assets/img/logo.png" alt="" class="logo-mark">MOBEE SCENTS</span><button class="icon-btn mobile-close">×</button></div><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="collections.html">Collections</a><a href="about.html">Our Story</a><a href="track.html">Track Order</a><a href="contact.html">Contact</a></aside><div class="toast"></div><script src="script.js"></script></body></html>
