@@ -168,7 +168,7 @@ function renderProductPage(){
         size=b.dataset.size;price=sizePrices[size];
         $('#pPrice').textContent=format(price);
         addBtn.dataset.price=price;addBtn.dataset.size=size;
-        addBtn.textContent='Add to bag — '+format(price);
+        addBtn.textContent='Add to Cart — '+format(price);
       });
       $('#pAccTitle1').textContent='How it smells';
       $('#pAccBody1').textContent=data.smells;
@@ -179,7 +179,7 @@ function renderProductPage(){
 
   const addBtn=$('#pAddBtn');
   addBtn.dataset.name=name;addBtn.dataset.price=price;addBtn.dataset.img=mainImg;addBtn.dataset.size=size;
-  addBtn.textContent='Add to bag — '+format(price);
+  addBtn.textContent='Add to Cart — '+format(price);
 
   let related=[];
   if(mode==='box'){
