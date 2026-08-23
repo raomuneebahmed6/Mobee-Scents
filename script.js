@@ -155,13 +155,21 @@ function renderProductPage(){
       $('#pSizeRow').innerHTML=[5,10].map(n=>`<button class="size-btn${(n+'ml'===size)?' active':''}" data-goto="${base}-${n}ml">${n}ml</button>`).join('');
       $$('#pSizeRow .size-btn').forEach(b=>b.onclick=()=>location.href='product.html?slug='+b.dataset.goto);
       $('#pAccTitle1').textContent='Why try a tester first?';
-      $('#pAccBody1').textContent='Fragrance wears differently on every skin. A tester lets you experience the full development — top, heart and base notes — over real days before investing in a 50ml or 100ml bottle.';
+      $('#pAccBody1').textContent='Fragrance wears differently on every skin. A tester lets you experience the full development — top, heart and base notes — over real days before investing in a full-size bottle.';
       $('#pAccTitle2').textContent='Tester credit *';
       $('#pAccBody2').textContent='Message us on WhatsApp with your tester order number when you upgrade to a full-size bottle within 30 days, and we\'ll deduct the tester price from your total.';
     }else{
       $('#pSizeLabel').textContent='Choose size';
-      $('#pSizeRow').innerHTML=['30ml','50ml','100ml'].map(s=>`<button class="size-btn${s==='50ml'?' active':''}">${s}</button>`).join('');
-      $$('#pSizeRow .size-btn').forEach(b=>b.onclick=()=>{$$('#pSizeRow .size-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active')});
+      const sizePrices={'30ml':data.price30,'50ml':data.price};
+      $('#pSizeRow').innerHTML=['30ml','50ml'].map(s=>`<button class="size-btn${s===size?' active':''}" data-size="${s}">${s}</button>`).join('');
+      $$('#pSizeRow .size-btn').forEach(b=>b.onclick=()=>{
+        $$('#pSizeRow .size-btn').forEach(x=>x.classList.remove('active'));
+        b.classList.add('active');
+        size=b.dataset.size;price=sizePrices[size];
+        $('#pPrice').textContent=format(price);
+        addBtn.dataset.price=price;addBtn.dataset.size=size;
+        addBtn.textContent='Add to bag — '+format(price);
+      });
       $('#pAccTitle1').textContent='How it smells';
       $('#pAccBody1').textContent=data.smells;
       $('#pAccTitle2').textContent='Best time to wear';
