@@ -33,6 +33,7 @@ const PRODUCTS = {
     name: 'Dior Sauvage', price: 3500, price30: 2000, badge: 'Popular', meta: 'For Him', cat: 'men fresh woody amber',
     rating: 4.8, reviews: 220, sub: 'Bergamot · Pepper · Ambroxan',
     img: 'assets/img/dior-sauvage.png',
+    gallery: ['assets/img/dior-sauvage.png', 'assets/img/dior-sauvage-2.png', 'assets/img/dior-sauvage-3.png'],
     top: 'Calabrian Bergamot', heart: 'Sichuan Pepper, Lavender, Star Anise', base: 'Vanilla, Ambroxan',
     lead: 'Our most requested designer icon — fresh peppery bergamot over a radiant, smoky ambroxan-vanilla base. Instantly recognizable, endlessly versatile.',
     longevity: 85, projection: 78, sweetness: 40, freshness: 70,
