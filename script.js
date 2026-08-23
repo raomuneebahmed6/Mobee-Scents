@@ -122,8 +122,18 @@ function renderProductPage(){
   $('#pPrice').textContent=format(price);
   const mainImg=mode==='box'?PRODUCTS[data.includes[0]].img:data.img;
   $('#pImg').src=mainImg;$('#pImg').alt=name;
-  const thumbImgs=mode==='box'?data.includes.slice(0,3).map(s=>PRODUCTS[s].img):[data.img,'assets/img/dior-sauvage-2.png','assets/img/dior-sauvage-3.png'];
-  $$('#pThumbs img').forEach((t,i)=>t.src=thumbImgs[i]||mainImg);
+  const thumbImgs=mode==='box'?data.includes.slice(0,3).map(s=>PRODUCTS[s].img):(data.gallery&&data.gallery.length?data.gallery:[data.img,data.img,data.img]);
+  $$('#pThumbs .thumb').forEach((thumbEl,i)=>{
+    const src=thumbImgs[i]||mainImg;
+    const img=thumbEl.querySelector('img');
+    img.src=src;img.alt=name+' photo '+(i+1);
+    thumbEl.classList.toggle('active',i===0);
+    thumbEl.onclick=()=>{
+      $('#pImg').src=src;$('#pImg').alt=name;
+      $$('#pThumbs .thumb').forEach(x=>x.classList.remove('active'));
+      thumbEl.classList.add('active');
+    };
+  });
 
   if(mode==='box'){
     $('#pNotesGrid').style.display='none';
